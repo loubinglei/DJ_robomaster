@@ -1,0 +1,27 @@
+
+/************************** Constant Definitions *****************************/
+#define XCANPS_MAX_FRAME_SIZE_IN_WORDS (XCANPS_MAX_FRAME_SIZE / sizeof(u32)) //Maximum CAN frame length in words
+
+#define FRAME_DATA_LENGTH 		8  /* Frame Data field length */
+
+/************************** Function Prototypes ******************************/
+extern int CanPs_Polled_init(u16 DeviceId, XCanPs *CanInstPtr);
+extern int SendFrame(XCanPs *InstancePtr);
+extern int RecvFrame(XCanPs *InstancePtr,CanRxMsg* RxMessage);
+
+/************************** Variable Definitions *****************************/
+extern u32 TxFrame[XCANPS_MAX_FRAME_SIZE_IN_WORDS];
+extern u32 RxFrame[XCANPS_MAX_FRAME_SIZE_IN_WORDS];
+extern u32 Rx_MESSAGE_ID;
+extern u32 Tx_MESSAGE_ID;
+
+extern u32 StdId;
+extern u8 IDE;
+extern u8 RTR;
+extern u8 DLC;
+extern u8 Data[8];
+extern u8 FMI;
+
+/************************** Driver instance ***********************************/
+
+

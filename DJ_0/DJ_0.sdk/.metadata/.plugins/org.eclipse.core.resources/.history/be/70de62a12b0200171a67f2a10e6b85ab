@@ -1,0 +1,8 @@
+#ifndef __MAIN_H__
+#define __MAIN_H__
+
+#include "main.h"
+
+extern int SendFrame(XCanPs *InstancePtr);
+extern int RecvFrame(XCanPs *InstancePtr);
+#endif 

@@ -1,0 +1,9 @@
+#ifndef __MAIN_H__
+#define __MAIN_H__
+
+#include "main.h"
+
+int CanPs_Polled_init(u16 DeviceId);
+int SendFrame(XCanPs *InstancePtr);
+int RecvFrame(XCanPs *InstancePtr);
+#endif 

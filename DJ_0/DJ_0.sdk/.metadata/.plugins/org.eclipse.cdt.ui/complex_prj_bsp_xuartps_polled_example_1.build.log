@@ -1,0 +1,8 @@
+12:22:17 **** Incremental Build of configuration Debug for project complex_prj_bsp_xuartps_polled_example_1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+make: Nothing to be done for `main-build'.
+
+12:22:17 Build Finished (took 126ms)
+

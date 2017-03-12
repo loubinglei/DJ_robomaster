@@ -1,0 +1,8 @@
+13:39:23 **** Incremental Build of configuration Debug for project hello_world_bsp_xcanps_polled_example_2 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+make: Nothing to be done for `main-build'.
+
+13:39:23 Build Finished (took 122ms)
+

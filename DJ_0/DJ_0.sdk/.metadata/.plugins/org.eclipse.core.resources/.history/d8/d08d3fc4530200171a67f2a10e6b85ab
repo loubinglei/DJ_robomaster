@@ -1,0 +1,5 @@
+
+#include "xuartps.h"
+
+
+int Uart_Initialize(u16 DeviceId);

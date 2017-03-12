@@ -1,0 +1,21 @@
+
+#include "main.h"
+/************************** Function Prototypes ******************************/
+extern int CanPs_Polled_init(u16 DeviceId, XCanPs *CanInstPtr);
+extern int SendFrame(XCanPs *InstancePtr);
+extern int RecvFrame(XCanPs *InstancePtr);
+
+
+#define RATE_BUF_SIZE 6
+typedef struct{
+	Xint32 raw_value;
+}AAAAAA;
+
+
+
+
+/************************** Driver instance ***********************************/
+
+
+
+

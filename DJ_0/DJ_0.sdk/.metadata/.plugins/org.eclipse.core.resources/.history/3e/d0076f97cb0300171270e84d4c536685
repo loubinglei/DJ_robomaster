@@ -1,0 +1,30 @@
+/***************************** Include Files *********************************/
+#include "xcanps.h"
+#include "xparameters.h"
+#include "xil_printf.h"
+#include "stdio.h"
+
+#include "can.h"
+#include "scutimer.h"
+#include "Uart_0.h"
+#include "RemoteTask.h"
+//#include "ramp.h"
+#include "ControlTask.h"
+//#include "pid_regulator.h"
+#include "pid.h"
+#include "CanBusTask.h"
+
+#include "common.h"
+
+//UART_0
+#define INTC		XScuGic
+#define UART_DEVICE_ID      XPAR_XUARTPS_0_DEVICE_ID
+#define INTC_DEVICE_ID		XPAR_SCUGIC_SINGLE_DEVICE_ID
+#define UART_INT_IRQ_ID		XPAR_XUARTPS_0_INTR
+
+
+extern XCanPs *CanInstPtr_0;
+extern XCanPs *CanInstPtr_1;
+
+extern u8 send;
+extern u8 rece;

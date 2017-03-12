@@ -1,0 +1,13 @@
+
+
+/************************** Function Prototypes ******************************/
+extern int CanPs_Polled_init(u16 DeviceId);
+extern int SendFrame(XCanPs *InstancePtr);
+extern int RecvFrame(XCanPs *InstancePtr);
+
+/************************** Driver instance ***********************************/
+
+XCanPs Can;
+XCanPs *CanInstPtr = &Can;
+
+

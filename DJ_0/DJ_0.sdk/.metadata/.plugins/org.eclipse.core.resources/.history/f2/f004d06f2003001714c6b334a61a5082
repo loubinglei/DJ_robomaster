@@ -1,0 +1,8 @@
+
+#include "xuartps.h"
+
+#define PITCH_MAX 19.0f
+#define  RC_FRAME_LENGTH                            18u
+
+int Uart_Initialize(u16 DeviceId);
+extern XUartPs Uart_Ps;

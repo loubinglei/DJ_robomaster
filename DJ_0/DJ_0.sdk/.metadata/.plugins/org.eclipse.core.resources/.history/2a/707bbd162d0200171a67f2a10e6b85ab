@@ -1,0 +1,9 @@
+#ifndef __MAIN_H__
+#define __MAIN_H__
+
+#include "xcanps.h"
+#include "xparameters.h"
+#include "xil_printf.h"
+#include "can.h"
+
+#endif 
