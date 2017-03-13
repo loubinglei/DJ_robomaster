@@ -165,23 +165,23 @@ static void TimerIntrHandler(void *CallBackRef)
 		    if(count_1ms % 4 ==0) //4mS进一次        4ms == motor control frequency
 		    {
 		    	//底盘控制任务
-
+			RemoteDataPrcess(RecvBuffer);
 			   CMControlLoop();
 		    }
 		    if(count_1ms % 4 ==2)
 		    {
 				RecvFrame(CanInstPtr_1,&rx_message);   //接收can
 				CanReceiveMsgProcess(&rx_message);    //处理can接收的数据
-	/*			printf("CMxSpeedPID.Ref = %f %f %f %f\n",CM1SpeedPID.Ref,\
+/*				printf("CMxSpeedPID.Ref = %d %d %d %d\n",CM1SpeedPID.Ref,\
 						CM2SpeedPID.Ref,\
 						CM3SpeedPID.Ref,\
 						CM4SpeedPID.Ref);
-*/
-				printf("CMxSpeedPID.Fdb = %f %f %f %f\n",CM1SpeedPID.Fdb,\
+
+				printf("CMxSpeedPID.Fdb = %d %d %d %d\n",CM1SpeedPID.Fdb,\
 						CM2SpeedPID.Fdb,\
 						CM3SpeedPID.Fdb,\
 						CM4SpeedPID.Fdb);
-
+*/
 		    }
 	}
 }

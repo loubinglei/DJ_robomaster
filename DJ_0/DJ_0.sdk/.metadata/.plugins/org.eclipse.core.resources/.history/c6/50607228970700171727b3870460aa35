@@ -177,11 +177,11 @@ static void TimerIntrHandler(void *CallBackRef)
 						CM3SpeedPID.Ref,\
 						CM4SpeedPID.Ref);
 */
-				printf("CMxSpeedPID.Fdb = %f %f %f %f\n",CM1SpeedPID.Fdb,\
+/*				printf("CMxSpeedPID.Fdb = %d %d %d %d\n",CM1SpeedPID.Fdb,\
 						CM2SpeedPID.Fdb,\
 						CM3SpeedPID.Fdb,\
 						CM4SpeedPID.Fdb);
-
+*/
 		    }
 	}
 }

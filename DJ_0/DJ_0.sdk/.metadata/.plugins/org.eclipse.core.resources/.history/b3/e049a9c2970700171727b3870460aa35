@@ -60,10 +60,10 @@ void CMControlLoop(void)
 */
 
 	//CMxSpeedPID.Ref是遥控器发来的数据 作为reference，相当于目标值，与下面的Fdb（实际值）作对比，得到偏差，作为PID的输入
-	CM1SpeedPID.Ref = 53.872*(-ChassisSpeedRef.forward_back_ref*0.075 + ChassisSpeedRef.left_right_ref*0.075);// + ChassisSpeedRef.rotate_ref;
-	CM2SpeedPID.Ref = 53.872*(ChassisSpeedRef.forward_back_ref*0.075 + ChassisSpeedRef.left_right_ref*0.075);// + ChassisSpeedRef.rotate_ref;
-	CM3SpeedPID.Ref = 53.872*(ChassisSpeedRef.forward_back_ref*0.075 - ChassisSpeedRef.left_right_ref*0.075);// + ChassisSpeedRef.rotate_ref;
-	CM4SpeedPID.Ref = 53.872*(-ChassisSpeedRef.forward_back_ref*0.075 - ChassisSpeedRef.left_right_ref*0.075);// + ChassisSpeedRef.rotate_ref;
+	CM1SpeedPID.Ref =  -ChassisSpeedRef.forward_back_ref*0.075 + ChassisSpeedRef.left_right_ref*0.075;// + ChassisSpeedRef.rotate_ref;
+	CM2SpeedPID.Ref = ChassisSpeedRef.forward_back_ref*0.075 + ChassisSpeedRef.left_right_ref*0.075;// + ChassisSpeedRef.rotate_ref;
+	CM3SpeedPID.Ref = ChassisSpeedRef.forward_back_ref*0.075 - ChassisSpeedRef.left_right_ref*0.075;// + ChassisSpeedRef.rotate_ref;
+	CM4SpeedPID.Ref = -ChassisSpeedRef.forward_back_ref*0.075 - ChassisSpeedRef.left_right_ref*0.075;// + ChassisSpeedRef.rotate_ref;
 
 	//CMxSpeedPID.Fdb是通过CAN_1接收到的编码器数据，作为速度反馈
 	CM1SpeedPID.Fdb = (float)CM1Encoder.filter_rate;
@@ -80,7 +80,7 @@ void CMControlLoop(void)
 	//CM1SpeedPID.Out最大为5000，这个值是按照以前DJ工程设定的，不会有错   我试过直接赋值Set_CM_Speed(CanInstPtr_1,300,300,300,300)车子缓慢，说明5000的最大值是靠谱的
 
 	Set_CM_Speed(CanInstPtr_1,CHASSIS_SPEED_ATTENUATION * CM1SpeedPID.Out, CHASSIS_SPEED_ATTENUATION * CM2SpeedPID.Out, CHASSIS_SPEED_ATTENUATION * CM3SpeedPID.Out, CHASSIS_SPEED_ATTENUATION * CM4SpeedPID.Out);
-	//Set_CM_Speed(CanInstPtr_1,4950,4950,4950,4950);
+
 }
 
 

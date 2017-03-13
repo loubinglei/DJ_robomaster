@@ -30,7 +30,7 @@ Default initalizer for the PID object.
 #define PID_DEFAULTS     { 0.0f, \
                            0.0f, \
                            0.0f, \
-						   1.2f, \
+						   220.0f, \
                            0.0f, \
                            0.0f, \
                            0.0f, \
@@ -38,8 +38,8 @@ Default initalizer for the PID object.
 						   3500.0f, \
 						   1500.0f, \
                            0.0f, \
-                           4950.0f, \
-                           -4950.0f, \
+                           5000.0f, \
+                           -5000.0f, \
                            0.0f, \
                            0.0f, \
                            0.0f, \

@@ -156,32 +156,21 @@ static void TimerIntrHandler(void *CallBackRef)
 		    if(count_1ms % 1000 ==0) //1S进一次    用于串口打印
 		    {
 		    	//打印遥控器数据
-				printf("ch0 = %d ch1 = %d ch2 = %d ch3 = %d\n",\
+				printf("ch0 = %x ch1 = %x ch2 = %x ch3 = %x\n",\
 						RC_CtrlData.rc.ch0,RC_CtrlData.rc.ch1,RC_CtrlData.rc.ch2,RC_CtrlData.rc.ch3);
-				printf("s1 = %d s2 = %d\n",RC_CtrlData.rc.s1,RC_CtrlData.rc.s2);
-				printf("key = %d\n",RC_CtrlData.key.v);
+				printf("s1 = %x s2 = %x\n",RC_CtrlData.rc.s1,RC_CtrlData.rc.s2);
+				printf("key = %x\n",RC_CtrlData.key.v);
 				xil_printf("*************************************************************\n\r");
 		    }
 		    if(count_1ms % 4 ==0) //4mS进一次        4ms == motor control frequency
 		    {
 		    	//底盘控制任务
-
 			   CMControlLoop();
 		    }
 		    if(count_1ms % 4 ==2)
 		    {
 				RecvFrame(CanInstPtr_1,&rx_message);   //接收can
 				CanReceiveMsgProcess(&rx_message);    //处理can接收的数据
-	/*			printf("CMxSpeedPID.Ref = %f %f %f %f\n",CM1SpeedPID.Ref,\
-						CM2SpeedPID.Ref,\
-						CM3SpeedPID.Ref,\
-						CM4SpeedPID.Ref);
-*/
-				printf("CMxSpeedPID.Fdb = %f %f %f %f\n",CM1SpeedPID.Fdb,\
-						CM2SpeedPID.Fdb,\
-						CM3SpeedPID.Fdb,\
-						CM4SpeedPID.Fdb);
-
 		    }
 	}
 }

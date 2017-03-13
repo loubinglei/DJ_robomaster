@@ -56,7 +56,7 @@ int main()
 					XUartPs_Recv(&Uart_Ps, &RecvBuffer[ReceivedCount],
 						      (TEST_BUFFER_SIZE - ReceivedCount));
 			}
-		       RemoteDataPrcess(RecvBuffer);
+			RemoteDataPrcess(RecvBuffer);
 
 
 /*			 printf("polled %d %d %d %d %d %d %d %d %d %d\
