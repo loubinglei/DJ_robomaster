@@ -348,7 +348,7 @@ void Set_CM_Speed(XCanPs *InstancePtr,s16 cm1_iq, s16 cm2_iq, s16 cm3_iq, s16 cm
    给电调板发送指令，ID号为0x1FF，只用两个电调板，数据回传ID为0x205和0x206
 	 cyq:更改为发送三个电调的指令。
 *********************************************************************************/
-void Set_Gimbal_Current(int16_t gimbal_yaw_iq, int16_t gimbal_pitch_iq)
+void Set_Gimbal_Current(XCanPs *InstancePtr,int16_t gimbal_yaw_iq, int16_t gimbal_pitch_iq)
 {
 	u8 *FramePtr;
 
@@ -367,6 +367,29 @@ void Set_Gimbal_Current(int16_t gimbal_yaw_iq, int16_t gimbal_pitch_iq)
 		*FramePtr++ = 0x00;
 		*FramePtr++ = 0x00;
     
-    SendFrame(CanInstPtr_1);
+    SendFrame(InstancePtr);
 
+}
+
+
+
+void GYRO_RST(void)
+{
+	u8 *FramePtr;
+	Tx_MESSAGE_ID = 0x404;
+
+	TxFrame[0] = (u32)XCanPs_CreateIdValue((u32)Tx_MESSAGE_ID, 0, 0, 0, 0);
+	TxFrame[1] = (u32)XCanPs_CreateDlcValue((u32)FRAME_DATA_LENGTH);
+	FramePtr = (u8 *)(&TxFrame[2]);   // TxFrame has 4 worlds
+
+	*FramePtr++ = 0x00;
+	*FramePtr++ = 0x01;
+	*FramePtr++ = 0x02;
+	*FramePtr++ = 0x03;
+	*FramePtr++ = 0x04;
+	*FramePtr++ = 0x05;
+	*FramePtr++ = 0x06;
+	*FramePtr++ = 0x07;
+
+    SendFrame(CanInstPtr_0);
 }

@@ -1,10 +1,1194 @@
-10:58:31 **** Incremental Build of configuration Debug for project complex_prj ****
+17:20:20 **** Incremental Build of configuration Debug for project complex_prj ****
 make pre-build main-build 
 a9-linaro-pre-build-step
 ' '
 make: Nothing to be done for `main-build'.
-10:58:54 **** Incremental Build of configuration Debug for project complex_prj ****
+17:22:15 **** Auto Build of configuration Debug for project complex_prj ****
 make pre-build main-build 
 a9-linaro-pre-build-step
 ' '
-make: Nothing to be done for `main-build'.
+'Building file: ../src/ControlTask.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/ControlTask.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../complex_prj_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/ControlTask.d" -MT"src/ControlTask.o" -o "src/ControlTask.o" "../src/ControlTask.c"
+In file included from ../src/main.h:31:0,
+                 from ../src/ControlTask.c:1:
+../src/IOTask.h:58:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GimbalCaliStruct_t;
+ ^
+../src/IOTask.h:66:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GyroCaliStruct_t;
+ ^
+../src/IOTask.h:77:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AccCaliStruct_t;
+ ^
+../src/IOTask.h:88:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }MagCaliStruct_t;
+ ^
+../src/IOTask.h:97:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }PIDParamStruct_t;
+ ^
+../src/IOTask.h:111:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AppParam_t;
+ ^
+../src/ControlTask.c: In function 'GMPitchControlLoop':
+../src/ControlTask.c:250:16: error: 'PID' has no member named 'kp'
+  GMPPositionPID.kp = PITCH_POSITION_KP_DEFAULTS + PitchPositionSavedPID.kp_offset;
+                ^
+../src/ControlTask.c:251:16: error: 'PID' has no member named 'ki'
+  GMPPositionPID.ki = PITCH_POSITION_KI_DEFAULTS + PitchPositionSavedPID.ki_offset;
+                ^
+../src/ControlTask.c:252:16: error: 'PID' has no member named 'kd'
+  GMPPositionPID.kd = PITCH_POSITION_KD_DEFAULTS + PitchPositionSavedPID.kd_offset;
+                ^
+../src/ControlTask.c:254:13: error: 'PID' has no member named 'kp'
+  GMPSpeedPID.kp = PITCH_SPEED_KP_DEFAULTS + PitchSpeedSavedPID.kp_offset;
+             ^
+../src/ControlTask.c:255:13: error: 'PID' has no member named 'ki'
+  GMPSpeedPID.ki = PITCH_SPEED_KI_DEFAULTS + PitchSpeedSavedPID.ki_offset;
+             ^
+../src/ControlTask.c:256:13: error: 'PID' has no member named 'kd'
+  GMPSpeedPID.kd = PITCH_SPEED_KD_DEFAULTS + PitchSpeedSavedPID.kd_offset;
+             ^
+../src/ControlTask.c:258:16: error: 'PID' has no member named 'ref'
+  GMPPositionPID.ref = GimbalRef.pitch_angle_dynamic_ref;
+                ^
+../src/ControlTask.c:259:16: error: 'PID' has no member named 'fdb'
+  GMPPositionPID.fdb = -GMPitchEncoder.ecd_angle * GMPitchRamp.Calc(&GMPitchRamp);    //加入斜坡函数
+                ^
+../src/ControlTask.c:259:51: error: 'GMPitchRamp' undeclared (first use in this function)
+  GMPPositionPID.fdb = -GMPitchEncoder.ecd_angle * GMPitchRamp.Calc(&GMPitchRamp);    //加入斜坡函数
+                                                   ^
+../src/ControlTask.c:259:51: note: each undeclared identifier is reported only once for each function it appears in
+../src/ControlTask.c:260:16: error: 'PID' has no member named 'Calc'
+  GMPPositionPID.Calc(&GMPPositionPID);   //得到pitch轴位置环输出控制量
+                ^
+../src/ControlTask.c:262:13: error: 'PID' has no member named 'ref'
+  GMPSpeedPID.ref = GMPPositionPID.output;
+             ^
+../src/ControlTask.c:262:34: error: 'PID' has no member named 'output'
+  GMPSpeedPID.ref = GMPPositionPID.output;
+                                  ^
+../src/ControlTask.c:263:13: error: 'PID' has no member named 'fdb'
+  GMPSpeedPID.fdb = MPU6050_Real_Data.Gyro_Y;
+             ^
+../src/ControlTask.c:264:13: error: 'PID' has no member named 'Calc'
+  GMPSpeedPID.Calc(&GMPSpeedPID);
+             ^
+make: *** [src/ControlTask.o] 错误 1
+17:23:13 **** Auto Build of configuration Debug for project complex_prj ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/ControlTask.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/ControlTask.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../complex_prj_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/ControlTask.d" -MT"src/ControlTask.o" -o "src/ControlTask.o" "../src/ControlTask.c"
+In file included from ../src/main.h:31:0,
+                 from ../src/ControlTask.c:1:
+../src/IOTask.h:58:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GimbalCaliStruct_t;
+ ^
+../src/IOTask.h:66:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GyroCaliStruct_t;
+ ^
+../src/IOTask.h:77:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AccCaliStruct_t;
+ ^
+../src/IOTask.h:88:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }MagCaliStruct_t;
+ ^
+../src/IOTask.h:97:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }PIDParamStruct_t;
+ ^
+../src/IOTask.h:111:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AppParam_t;
+ ^
+../src/ControlTask.c: In function 'GMPitchControlLoop':
+../src/ControlTask.c:259:51: error: 'GMPitchRamp' undeclared (first use in this function)
+  GMPPositionPID.Fdb = -GMPitchEncoder.ecd_angle * GMPitchRamp.Calc(&GMPitchRamp);    //加入斜坡函数
+                                                   ^
+../src/ControlTask.c:259:51: note: each undeclared identifier is reported only once for each function it appears in
+../src/ControlTask.c:260:16: error: 'PID' has no member named 'Calc'
+  GMPPositionPID.Calc(&GMPPositionPID);   //得到pitch轴位置环输出控制量
+                ^
+../src/ControlTask.c:262:13: error: 'PID' has no member named 'ref'
+  GMPSpeedPID.ref = GMPPositionPID.output;
+             ^
+../src/ControlTask.c:262:34: error: 'PID' has no member named 'output'
+  GMPSpeedPID.ref = GMPPositionPID.output;
+                                  ^
+../src/ControlTask.c:263:13: error: 'PID' has no member named 'fdb'
+  GMPSpeedPID.fdb = MPU6050_Real_Data.Gyro_Y;
+             ^
+../src/ControlTask.c:264:13: error: 'PID' has no member named 'Calc'
+  GMPSpeedPID.Calc(&GMPSpeedPID);
+             ^
+make: *** [src/ControlTask.o] 错误 1
+17:23:23 **** Auto Build of configuration Debug for project complex_prj ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/ControlTask.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/ControlTask.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../complex_prj_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/ControlTask.d" -MT"src/ControlTask.o" -o "src/ControlTask.o" "../src/ControlTask.c"
+In file included from ../src/main.h:31:0,
+                 from ../src/ControlTask.c:1:
+../src/IOTask.h:58:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GimbalCaliStruct_t;
+ ^
+../src/IOTask.h:66:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GyroCaliStruct_t;
+ ^
+../src/IOTask.h:77:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AccCaliStruct_t;
+ ^
+../src/IOTask.h:88:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }MagCaliStruct_t;
+ ^
+../src/IOTask.h:97:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }PIDParamStruct_t;
+ ^
+../src/IOTask.h:111:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AppParam_t;
+ ^
+../src/ControlTask.c: In function 'GMPitchControlLoop':
+../src/ControlTask.c:260:16: error: 'PID' has no member named 'Calc'
+  GMPPositionPID.Calc(&GMPPositionPID);   //得到pitch轴位置环输出控制量
+                ^
+../src/ControlTask.c:262:13: error: 'PID' has no member named 'ref'
+  GMPSpeedPID.ref = GMPPositionPID.output;
+             ^
+../src/ControlTask.c:262:34: error: 'PID' has no member named 'output'
+  GMPSpeedPID.ref = GMPPositionPID.output;
+                                  ^
+../src/ControlTask.c:263:13: error: 'PID' has no member named 'fdb'
+  GMPSpeedPID.fdb = MPU6050_Real_Data.Gyro_Y;
+             ^
+../src/ControlTask.c:264:13: error: 'PID' has no member named 'Calc'
+  GMPSpeedPID.Calc(&GMPSpeedPID);
+             ^
+make: *** [src/ControlTask.o] 错误 1
+17:23:42 **** Auto Build of configuration Debug for project complex_prj ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/ControlTask.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/ControlTask.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../complex_prj_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/ControlTask.d" -MT"src/ControlTask.o" -o "src/ControlTask.o" "../src/ControlTask.c"
+In file included from ../src/main.h:31:0,
+                 from ../src/ControlTask.c:1:
+../src/IOTask.h:58:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GimbalCaliStruct_t;
+ ^
+../src/IOTask.h:66:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GyroCaliStruct_t;
+ ^
+../src/IOTask.h:77:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AccCaliStruct_t;
+ ^
+../src/IOTask.h:88:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }MagCaliStruct_t;
+ ^
+../src/IOTask.h:97:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }PIDParamStruct_t;
+ ^
+../src/IOTask.h:111:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AppParam_t;
+ ^
+../src/ControlTask.c: In function 'GMPitchControlLoop':
+../src/ControlTask.c:262:13: error: 'PID' has no member named 'ref'
+  GMPSpeedPID.ref = GMPPositionPID.output;
+             ^
+../src/ControlTask.c:262:34: error: 'PID' has no member named 'output'
+  GMPSpeedPID.ref = GMPPositionPID.output;
+                                  ^
+../src/ControlTask.c:263:13: error: 'PID' has no member named 'fdb'
+  GMPSpeedPID.fdb = MPU6050_Real_Data.Gyro_Y;
+             ^
+../src/ControlTask.c:264:13: error: 'PID' has no member named 'Calc'
+  GMPSpeedPID.Calc(&GMPSpeedPID);
+             ^
+make: *** [src/ControlTask.o] 错误 1
+17:24:07 **** Auto Build of configuration Debug for project complex_prj ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/ControlTask.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/ControlTask.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../complex_prj_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/ControlTask.d" -MT"src/ControlTask.o" -o "src/ControlTask.o" "../src/ControlTask.c"
+In file included from ../src/main.h:31:0,
+                 from ../src/ControlTask.c:1:
+../src/IOTask.h:58:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GimbalCaliStruct_t;
+ ^
+../src/IOTask.h:66:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GyroCaliStruct_t;
+ ^
+../src/IOTask.h:77:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AccCaliStruct_t;
+ ^
+../src/IOTask.h:88:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }MagCaliStruct_t;
+ ^
+../src/IOTask.h:97:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }PIDParamStruct_t;
+ ^
+../src/IOTask.h:111:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AppParam_t;
+ ^
+../src/ControlTask.c: In function 'GMPitchControlLoop':
+../src/ControlTask.c:262:34: error: 'PID' has no member named 'output'
+  GMPSpeedPID.Ref = GMPPositionPID.output;
+                                  ^
+make: *** [src/ControlTask.o] 错误 1
+17:24:32 **** Auto Build of configuration Debug for project complex_prj ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/ControlTask.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/ControlTask.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../complex_prj_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/ControlTask.d" -MT"src/ControlTask.o" -o "src/ControlTask.o" "../src/ControlTask.c"
+In file included from ../src/main.h:31:0,
+                 from ../src/ControlTask.c:1:
+../src/IOTask.h:58:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GimbalCaliStruct_t;
+ ^
+../src/IOTask.h:66:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GyroCaliStruct_t;
+ ^
+../src/IOTask.h:77:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AccCaliStruct_t;
+ ^
+../src/IOTask.h:88:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }MagCaliStruct_t;
+ ^
+../src/IOTask.h:97:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }PIDParamStruct_t;
+ ^
+../src/IOTask.h:111:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AppParam_t;
+ ^
+'Finished building: ../src/ControlTask.c'
+' '
+'Building target: complex_prj.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../complex_prj_bsp/ps7_cortexa9_0/lib -o "complex_prj.elf"  ./src/CanBusTask.o ./src/ControlTask.o ./src/IIC_API.o ./src/IOTask.o ./src/RemoteTask.o ./src/Uart_0.o ./src/imu.o ./src/main.o ./src/mpu6050_driver.o ./src/pid.o ./src/scutimer.o   -lm -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: complex_prj.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size complex_prj.elf  |tee "complex_prj.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 121552	   4936	  25132	 151620	  25044	complex_prj.elf
+'Finished building: complex_prj.elf.size'
+' '
+17:25:37 **** Auto Build of configuration Debug for project complex_prj ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/ControlTask.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/ControlTask.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../complex_prj_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/ControlTask.d" -MT"src/ControlTask.o" -o "src/ControlTask.o" "../src/ControlTask.c"
+In file included from ../src/main.h:31:0,
+                 from ../src/ControlTask.c:1:
+../src/IOTask.h:58:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GimbalCaliStruct_t;
+ ^
+../src/IOTask.h:66:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GyroCaliStruct_t;
+ ^
+../src/IOTask.h:77:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AccCaliStruct_t;
+ ^
+../src/IOTask.h:88:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }MagCaliStruct_t;
+ ^
+../src/IOTask.h:97:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }PIDParamStruct_t;
+ ^
+../src/IOTask.h:111:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AppParam_t;
+ ^
+../src/ControlTask.c: In function 'GMYawControlLoop':
+../src/ControlTask.c:269:16: error: 'PID' has no member named 'kp'
+  GMYPositionPID.kp = YAW_POSITION_KP_DEFAULTS + YawPositionSavedPID.kp_offset;//  gAppParamStruct.YawPositionPID.kp_offset;  //may be bug if more operation  done
+                ^
+../src/ControlTask.c:270:16: error: 'PID' has no member named 'ki'
+  GMYPositionPID.ki = YAW_POSITION_KI_DEFAULTS + YawPositionSavedPID.ki_offset;
+                ^
+../src/ControlTask.c:271:16: error: 'PID' has no member named 'kd'
+  GMYPositionPID.kd = YAW_POSITION_KD_DEFAULTS + YawPositionSavedPID.kd_offset;
+                ^
+../src/ControlTask.c:273:13: error: 'PID' has no member named 'kp'
+  GMYSpeedPID.kp = YAW_SPEED_KP_DEFAULTS + YawSpeedSavedPID.kp_offset;
+             ^
+../src/ControlTask.c:274:13: error: 'PID' has no member named 'ki'
+  GMYSpeedPID.ki = YAW_SPEED_KI_DEFAULTS + YawSpeedSavedPID.ki_offset;
+             ^
+../src/ControlTask.c:275:13: error: 'PID' has no member named 'kd'
+  GMYSpeedPID.kd = YAW_SPEED_KD_DEFAULTS + YawSpeedSavedPID.kd_offset;
+             ^
+../src/ControlTask.c:277:16: error: 'PID' has no member named 'Calc'
+  GMYPositionPID.Calc(&GMYPositionPID);
+                ^
+../src/ControlTask.c:279:13: error: 'PID' has no member named 'ref'
+  GMYSpeedPID.ref = GMYPositionPID.output;
+             ^
+../src/ControlTask.c:279:34: error: 'PID' has no member named 'output'
+  GMYSpeedPID.ref = GMYPositionPID.output;
+                                  ^
+../src/ControlTask.c:280:13: error: 'PID' has no member named 'fdb'
+  GMYSpeedPID.fdb = MPU6050_Real_Data.Gyro_Z;
+             ^
+../src/ControlTask.c:281:13: error: 'PID' has no member named 'Calc'
+  GMYSpeedPID.Calc(&GMYSpeedPID);
+             ^
+make: *** [src/ControlTask.o] 错误 1
+17:26:05 **** Auto Build of configuration Debug for project complex_prj ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/ControlTask.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/ControlTask.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../complex_prj_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/ControlTask.d" -MT"src/ControlTask.o" -o "src/ControlTask.o" "../src/ControlTask.c"
+In file included from ../src/main.h:31:0,
+                 from ../src/ControlTask.c:1:
+../src/IOTask.h:58:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GimbalCaliStruct_t;
+ ^
+../src/IOTask.h:66:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GyroCaliStruct_t;
+ ^
+../src/IOTask.h:77:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AccCaliStruct_t;
+ ^
+../src/IOTask.h:88:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }MagCaliStruct_t;
+ ^
+../src/IOTask.h:97:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }PIDParamStruct_t;
+ ^
+../src/IOTask.h:111:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AppParam_t;
+ ^
+../src/ControlTask.c: In function 'GMYawControlLoop':
+../src/ControlTask.c:279:34: error: 'PID' has no member named 'output'
+  GMYSpeedPID.Ref = GMYPositionPID.output;
+                                  ^
+make: *** [src/ControlTask.o] 错误 1
+17:26:12 **** Auto Build of configuration Debug for project complex_prj ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/ControlTask.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/ControlTask.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../complex_prj_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/ControlTask.d" -MT"src/ControlTask.o" -o "src/ControlTask.o" "../src/ControlTask.c"
+In file included from ../src/main.h:31:0,
+                 from ../src/ControlTask.c:1:
+../src/IOTask.h:58:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GimbalCaliStruct_t;
+ ^
+../src/IOTask.h:66:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GyroCaliStruct_t;
+ ^
+../src/IOTask.h:77:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AccCaliStruct_t;
+ ^
+../src/IOTask.h:88:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }MagCaliStruct_t;
+ ^
+../src/IOTask.h:97:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }PIDParamStruct_t;
+ ^
+../src/IOTask.h:111:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AppParam_t;
+ ^
+'Finished building: ../src/ControlTask.c'
+' '
+'Building target: complex_prj.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../complex_prj_bsp/ps7_cortexa9_0/lib -o "complex_prj.elf"  ./src/CanBusTask.o ./src/ControlTask.o ./src/IIC_API.o ./src/IOTask.o ./src/RemoteTask.o ./src/Uart_0.o ./src/imu.o ./src/main.o ./src/mpu6050_driver.o ./src/pid.o ./src/scutimer.o   -lm -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: complex_prj.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size complex_prj.elf  |tee "complex_prj.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 121872	   4936	  25132	 151940	  25184	complex_prj.elf
+'Finished building: complex_prj.elf.size'
+' '
+17:26:26 **** Auto Build of configuration Debug for project complex_prj ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/ControlTask.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/ControlTask.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../complex_prj_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/ControlTask.d" -MT"src/ControlTask.o" -o "src/ControlTask.o" "../src/ControlTask.c"
+In file included from ../src/main.h:31:0,
+                 from ../src/ControlTask.c:1:
+../src/IOTask.h:58:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GimbalCaliStruct_t;
+ ^
+../src/IOTask.h:66:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GyroCaliStruct_t;
+ ^
+../src/IOTask.h:77:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AccCaliStruct_t;
+ ^
+../src/IOTask.h:88:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }MagCaliStruct_t;
+ ^
+../src/IOTask.h:97:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }PIDParamStruct_t;
+ ^
+../src/IOTask.h:111:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AppParam_t;
+ ^
+../src/ControlTask.c: In function 'SetGimbalMotorOutput':
+../src/ControlTask.c:288:2: warning: implicit declaration of function 'Is_Serious_Error' [-Wimplicit-function-declaration]
+  if((GetWorkState() == STOP_STATE) ||Is_Serious_Error() || GetWorkState() == CALI_STATE)   
+  ^
+../src/ControlTask.c:290:22: error: 'CAN2' undeclared (first use in this function)
+   Set_Gimbal_Current(CAN2, 0, 0);     //yaw + pitch   
+                      ^
+../src/ControlTask.c:290:22: note: each undeclared identifier is reported only once for each function it appears in
+../src/ControlTask.c:290:3: error: too many arguments to function 'Set_Gimbal_Current'
+   Set_Gimbal_Current(CAN2, 0, 0);     //yaw + pitch   
+   ^
+In file included from ../src/main.h:24:0,
+                 from ../src/ControlTask.c:1:
+../src/CanBusTask.h:67:6: note: declared here
+ void Set_Gimbal_Current(s16 gimbal_pitch_iq, s16 gimbal_yaw_iq);
+      ^
+../src/ControlTask.c:294:49: error: 'PID' has no member named 'output'
+   Set_Gimbal_Current(CAN2, -(int16_t)GMYSpeedPID.output, -(int16_t)GMPSpeedPID.output);     //yaw + pitch   
+                                                 ^
+../src/ControlTask.c:294:79: error: 'PID' has no member named 'output'
+   Set_Gimbal_Current(CAN2, -(int16_t)GMYSpeedPID.output, -(int16_t)GMPSpeedPID.output);     //yaw + pitch   
+                                                                               ^
+../src/ControlTask.c:294:3: error: too many arguments to function 'Set_Gimbal_Current'
+   Set_Gimbal_Current(CAN2, -(int16_t)GMYSpeedPID.output, -(int16_t)GMPSpeedPID.output);     //yaw + pitch   
+   ^
+In file included from ../src/main.h:24:0,
+                 from ../src/ControlTask.c:1:
+../src/CanBusTask.h:67:6: note: declared here
+ void Set_Gimbal_Current(s16 gimbal_pitch_iq, s16 gimbal_yaw_iq);
+      ^
+make: *** [src/ControlTask.o] 错误 1
+17:26:50 **** Auto Build of configuration Debug for project complex_prj ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/ControlTask.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/ControlTask.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../complex_prj_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/ControlTask.d" -MT"src/ControlTask.o" -o "src/ControlTask.o" "../src/ControlTask.c"
+In file included from ../src/main.h:31:0,
+                 from ../src/ControlTask.c:1:
+../src/IOTask.h:58:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GimbalCaliStruct_t;
+ ^
+../src/IOTask.h:66:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GyroCaliStruct_t;
+ ^
+../src/IOTask.h:77:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AccCaliStruct_t;
+ ^
+../src/IOTask.h:88:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }MagCaliStruct_t;
+ ^
+../src/IOTask.h:97:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }PIDParamStruct_t;
+ ^
+../src/IOTask.h:111:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AppParam_t;
+ ^
+../src/ControlTask.c: In function 'SetGimbalMotorOutput':
+../src/ControlTask.c:288:2: warning: implicit declaration of function 'Is_Serious_Error' [-Wimplicit-function-declaration]
+  if((GetWorkState() == STOP_STATE) ||Is_Serious_Error() || GetWorkState() == CALI_STATE)   
+  ^
+../src/ControlTask.c:290:22: error: 'CAN1' undeclared (first use in this function)
+   Set_Gimbal_Current(CAN1, 0, 0);     //yaw + pitch
+                      ^
+../src/ControlTask.c:290:22: note: each undeclared identifier is reported only once for each function it appears in
+../src/ControlTask.c:290:3: error: too many arguments to function 'Set_Gimbal_Current'
+   Set_Gimbal_Current(CAN1, 0, 0);     //yaw + pitch
+   ^
+In file included from ../src/main.h:24:0,
+                 from ../src/ControlTask.c:1:
+../src/CanBusTask.h:67:6: note: declared here
+ void Set_Gimbal_Current(s16 gimbal_pitch_iq, s16 gimbal_yaw_iq);
+      ^
+../src/ControlTask.c:294:22: error: 'CAN2' undeclared (first use in this function)
+   Set_Gimbal_Current(CAN2, -(int16_t)GMYSpeedPID.output, -(int16_t)GMPSpeedPID.output);     //yaw + pitch   
+                      ^
+../src/ControlTask.c:294:49: error: 'PID' has no member named 'output'
+   Set_Gimbal_Current(CAN2, -(int16_t)GMYSpeedPID.output, -(int16_t)GMPSpeedPID.output);     //yaw + pitch   
+                                                 ^
+../src/ControlTask.c:294:79: error: 'PID' has no member named 'output'
+   Set_Gimbal_Current(CAN2, -(int16_t)GMYSpeedPID.output, -(int16_t)GMPSpeedPID.output);     //yaw + pitch   
+                                                                               ^
+../src/ControlTask.c:294:3: error: too many arguments to function 'Set_Gimbal_Current'
+   Set_Gimbal_Current(CAN2, -(int16_t)GMYSpeedPID.output, -(int16_t)GMPSpeedPID.output);     //yaw + pitch   
+   ^
+In file included from ../src/main.h:24:0,
+                 from ../src/ControlTask.c:1:
+../src/CanBusTask.h:67:6: note: declared here
+ void Set_Gimbal_Current(s16 gimbal_pitch_iq, s16 gimbal_yaw_iq);
+      ^
+make: *** [src/ControlTask.o] 错误 1
+17:27:22 **** Auto Build of configuration Debug for project complex_prj ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/CanBusTask.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/CanBusTask.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../complex_prj_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/CanBusTask.d" -MT"src/CanBusTask.o" -o "src/CanBusTask.o" "../src/CanBusTask.c"
+In file included from ../src/main.h:31:0,
+                 from ../src/CanBusTask.c:1:
+../src/IOTask.h:58:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GimbalCaliStruct_t;
+ ^
+../src/IOTask.h:66:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GyroCaliStruct_t;
+ ^
+../src/IOTask.h:77:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AccCaliStruct_t;
+ ^
+../src/IOTask.h:88:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }MagCaliStruct_t;
+ ^
+../src/IOTask.h:97:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }PIDParamStruct_t;
+ ^
+../src/IOTask.h:111:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AppParam_t;
+ ^
+../src/CanBusTask.c:351:6: error: conflicting types for 'Set_Gimbal_Current'
+ void Set_Gimbal_Current(XCanPs *InstancePtr,int16_t gimbal_yaw_iq, int16_t gimbal_pitch_iq)
+      ^
+In file included from ../src/main.h:24:0,
+                 from ../src/CanBusTask.c:1:
+../src/CanBusTask.h:67:6: note: previous declaration of 'Set_Gimbal_Current' was here
+ void Set_Gimbal_Current(s16 gimbal_pitch_iq, s16 gimbal_yaw_iq);
+      ^
+make: *** [src/CanBusTask.o] 错误 1
+17:27:32 **** Auto Build of configuration Debug for project complex_prj ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/CanBusTask.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/CanBusTask.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../complex_prj_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/CanBusTask.d" -MT"src/CanBusTask.o" -o "src/CanBusTask.o" "../src/CanBusTask.c"
+In file included from ../src/main.h:31:0,
+                 from ../src/CanBusTask.c:1:
+../src/IOTask.h:58:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GimbalCaliStruct_t;
+ ^
+../src/IOTask.h:66:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GyroCaliStruct_t;
+ ^
+../src/IOTask.h:77:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AccCaliStruct_t;
+ ^
+../src/IOTask.h:88:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }MagCaliStruct_t;
+ ^
+../src/IOTask.h:97:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }PIDParamStruct_t;
+ ^
+../src/IOTask.h:111:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AppParam_t;
+ ^
+../src/CanBusTask.c:351:6: error: conflicting types for 'Set_Gimbal_Current'
+ void Set_Gimbal_Current(XCanPs *InstancePtr,int16_t gimbal_yaw_iq, int16_t gimbal_pitch_iq)
+      ^
+In file included from ../src/main.h:24:0,
+                 from ../src/CanBusTask.c:1:
+../src/CanBusTask.h:67:6: note: previous declaration of 'Set_Gimbal_Current' was here
+ void Set_Gimbal_Current(s16 gimbal_pitch_iq, s16 gimbal_yaw_iq);
+      ^
+make: *** [src/CanBusTask.o] 错误 1
+17:27:42 **** Auto Build of configuration Debug for project complex_prj ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/CanBusTask.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/CanBusTask.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../complex_prj_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/CanBusTask.d" -MT"src/CanBusTask.o" -o "src/CanBusTask.o" "../src/CanBusTask.c"
+In file included from ../src/main.h:31:0,
+                 from ../src/CanBusTask.c:1:
+../src/IOTask.h:58:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GimbalCaliStruct_t;
+ ^
+../src/IOTask.h:66:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GyroCaliStruct_t;
+ ^
+../src/IOTask.h:77:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AccCaliStruct_t;
+ ^
+../src/IOTask.h:88:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }MagCaliStruct_t;
+ ^
+../src/IOTask.h:97:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }PIDParamStruct_t;
+ ^
+../src/IOTask.h:111:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AppParam_t;
+ ^
+'Finished building: ../src/CanBusTask.c'
+' '
+'Building file: ../src/ControlTask.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/ControlTask.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../complex_prj_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/ControlTask.d" -MT"src/ControlTask.o" -o "src/ControlTask.o" "../src/ControlTask.c"
+In file included from ../src/main.h:31:0,
+                 from ../src/ControlTask.c:1:
+../src/IOTask.h:58:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GimbalCaliStruct_t;
+ ^
+../src/IOTask.h:66:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GyroCaliStruct_t;
+ ^
+../src/IOTask.h:77:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AccCaliStruct_t;
+ ^
+../src/IOTask.h:88:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }MagCaliStruct_t;
+ ^
+../src/IOTask.h:97:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }PIDParamStruct_t;
+ ^
+../src/IOTask.h:111:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AppParam_t;
+ ^
+../src/ControlTask.c: In function 'SetGimbalMotorOutput':
+../src/ControlTask.c:288:2: warning: implicit declaration of function 'Is_Serious_Error' [-Wimplicit-function-declaration]
+  if((GetWorkState() == STOP_STATE) ||Is_Serious_Error() || GetWorkState() == CALI_STATE)   
+  ^
+../src/ControlTask.c:290:22: error: 'CAN1' undeclared (first use in this function)
+   Set_Gimbal_Current(CAN1, 0, 0);     //yaw + pitch
+                      ^
+../src/ControlTask.c:290:22: note: each undeclared identifier is reported only once for each function it appears in
+../src/ControlTask.c:294:22: error: 'CAN2' undeclared (first use in this function)
+   Set_Gimbal_Current(CAN2, -(int16_t)GMYSpeedPID.output, -(int16_t)GMPSpeedPID.output);     //yaw + pitch   
+                      ^
+../src/ControlTask.c:294:49: error: 'PID' has no member named 'output'
+   Set_Gimbal_Current(CAN2, -(int16_t)GMYSpeedPID.output, -(int16_t)GMPSpeedPID.output);     //yaw + pitch   
+                                                 ^
+../src/ControlTask.c:294:79: error: 'PID' has no member named 'output'
+   Set_Gimbal_Current(CAN2, -(int16_t)GMYSpeedPID.output, -(int16_t)GMPSpeedPID.output);     //yaw + pitch   
+                                                                               ^
+make: *** [src/ControlTask.o] 错误 1
+17:28:18 **** Auto Build of configuration Debug for project complex_prj ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/ControlTask.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/ControlTask.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../complex_prj_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/ControlTask.d" -MT"src/ControlTask.o" -o "src/ControlTask.o" "../src/ControlTask.c"
+In file included from ../src/main.h:31:0,
+                 from ../src/ControlTask.c:1:
+../src/IOTask.h:58:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GimbalCaliStruct_t;
+ ^
+../src/IOTask.h:66:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GyroCaliStruct_t;
+ ^
+../src/IOTask.h:77:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AccCaliStruct_t;
+ ^
+../src/IOTask.h:88:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }MagCaliStruct_t;
+ ^
+../src/IOTask.h:97:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }PIDParamStruct_t;
+ ^
+../src/IOTask.h:111:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AppParam_t;
+ ^
+../src/ControlTask.c: In function 'SetGimbalMotorOutput':
+../src/ControlTask.c:288:2: warning: implicit declaration of function 'Is_Serious_Error' [-Wimplicit-function-declaration]
+  if((GetWorkState() == STOP_STATE) ||Is_Serious_Error() || GetWorkState() == CALI_STATE)   
+  ^
+../src/ControlTask.c:294:22: error: 'CAN2' undeclared (first use in this function)
+   Set_Gimbal_Current(CAN2, -(int16_t)GMYSpeedPID.output, -(int16_t)GMPSpeedPID.output);     //yaw + pitch   
+                      ^
+../src/ControlTask.c:294:22: note: each undeclared identifier is reported only once for each function it appears in
+../src/ControlTask.c:294:49: error: 'PID' has no member named 'output'
+   Set_Gimbal_Current(CAN2, -(int16_t)GMYSpeedPID.output, -(int16_t)GMPSpeedPID.output);     //yaw + pitch   
+                                                 ^
+../src/ControlTask.c:294:79: error: 'PID' has no member named 'output'
+   Set_Gimbal_Current(CAN2, -(int16_t)GMYSpeedPID.output, -(int16_t)GMPSpeedPID.output);     //yaw + pitch   
+                                                                               ^
+make: *** [src/ControlTask.o] 错误 1
+17:28:23 **** Auto Build of configuration Debug for project complex_prj ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/ControlTask.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/ControlTask.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../complex_prj_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/ControlTask.d" -MT"src/ControlTask.o" -o "src/ControlTask.o" "../src/ControlTask.c"
+In file included from ../src/main.h:31:0,
+                 from ../src/ControlTask.c:1:
+../src/IOTask.h:58:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GimbalCaliStruct_t;
+ ^
+../src/IOTask.h:66:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GyroCaliStruct_t;
+ ^
+../src/IOTask.h:77:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AccCaliStruct_t;
+ ^
+../src/IOTask.h:88:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }MagCaliStruct_t;
+ ^
+../src/IOTask.h:97:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }PIDParamStruct_t;
+ ^
+../src/IOTask.h:111:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AppParam_t;
+ ^
+../src/ControlTask.c: In function 'SetGimbalMotorOutput':
+../src/ControlTask.c:288:2: warning: implicit declaration of function 'Is_Serious_Error' [-Wimplicit-function-declaration]
+  if((GetWorkState() == STOP_STATE) ||Is_Serious_Error() || GetWorkState() == CALI_STATE)   
+  ^
+../src/ControlTask.c:294:57: error: 'PID' has no member named 'output'
+   Set_Gimbal_Current(CanInstPtr_1, -(int16_t)GMYSpeedPID.output, -(int16_t)GMPSpeedPID.output);     //yaw + pitch
+                                                         ^
+../src/ControlTask.c:294:87: error: 'PID' has no member named 'output'
+   Set_Gimbal_Current(CanInstPtr_1, -(int16_t)GMYSpeedPID.output, -(int16_t)GMPSpeedPID.output);     //yaw + pitch
+                                                                                       ^
+make: *** [src/ControlTask.o] 错误 1
+17:28:35 **** Auto Build of configuration Debug for project complex_prj ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/ControlTask.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/ControlTask.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../complex_prj_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/ControlTask.d" -MT"src/ControlTask.o" -o "src/ControlTask.o" "../src/ControlTask.c"
+In file included from ../src/main.h:31:0,
+                 from ../src/ControlTask.c:1:
+../src/IOTask.h:58:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GimbalCaliStruct_t;
+ ^
+../src/IOTask.h:66:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GyroCaliStruct_t;
+ ^
+../src/IOTask.h:77:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AccCaliStruct_t;
+ ^
+../src/IOTask.h:88:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }MagCaliStruct_t;
+ ^
+../src/IOTask.h:97:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }PIDParamStruct_t;
+ ^
+../src/IOTask.h:111:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AppParam_t;
+ ^
+../src/ControlTask.c: In function 'SetGimbalMotorOutput':
+../src/ControlTask.c:288:2: warning: implicit declaration of function 'Is_Serious_Error' [-Wimplicit-function-declaration]
+  if((GetWorkState() == STOP_STATE) ||Is_Serious_Error() || GetWorkState() == CALI_STATE)   
+  ^
+../src/ControlTask.c:294:84: error: 'PID' has no member named 'output'
+   Set_Gimbal_Current(CanInstPtr_1, -(int16_t)GMYSpeedPID.Out, -(int16_t)GMPSpeedPID.output);     //yaw + pitch
+                                                                                    ^
+make: *** [src/ControlTask.o] 错误 1
+17:28:39 **** Auto Build of configuration Debug for project complex_prj ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/ControlTask.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/ControlTask.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../complex_prj_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/ControlTask.d" -MT"src/ControlTask.o" -o "src/ControlTask.o" "../src/ControlTask.c"
+In file included from ../src/main.h:31:0,
+                 from ../src/ControlTask.c:1:
+../src/IOTask.h:58:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GimbalCaliStruct_t;
+ ^
+../src/IOTask.h:66:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GyroCaliStruct_t;
+ ^
+../src/IOTask.h:77:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AccCaliStruct_t;
+ ^
+../src/IOTask.h:88:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }MagCaliStruct_t;
+ ^
+../src/IOTask.h:97:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }PIDParamStruct_t;
+ ^
+../src/IOTask.h:111:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AppParam_t;
+ ^
+../src/ControlTask.c: In function 'SetGimbalMotorOutput':
+../src/ControlTask.c:288:2: warning: implicit declaration of function 'Is_Serious_Error' [-Wimplicit-function-declaration]
+  if((GetWorkState() == STOP_STATE) ||Is_Serious_Error() || GetWorkState() == CALI_STATE)   
+  ^
+'Finished building: ../src/ControlTask.c'
+' '
+'Building file: ../src/IIC_API.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/IIC_API.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../complex_prj_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/IIC_API.d" -MT"src/IIC_API.o" -o "src/IIC_API.o" "../src/IIC_API.c"
+In file included from ../src/main.h:31:0,
+                 from ../src/IIC_API.c:1:
+../src/IOTask.h:58:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GimbalCaliStruct_t;
+ ^
+../src/IOTask.h:66:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GyroCaliStruct_t;
+ ^
+../src/IOTask.h:77:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AccCaliStruct_t;
+ ^
+../src/IOTask.h:88:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }MagCaliStruct_t;
+ ^
+../src/IOTask.h:97:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }PIDParamStruct_t;
+ ^
+../src/IOTask.h:111:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AppParam_t;
+ ^
+'Finished building: ../src/IIC_API.c'
+' '
+'Building file: ../src/IOTask.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/IOTask.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../complex_prj_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/IOTask.d" -MT"src/IOTask.o" -o "src/IOTask.o" "../src/IOTask.c"
+In file included from ../src/main.h:31:0,
+                 from ../src/IOTask.c:1:
+../src/IOTask.h:58:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GimbalCaliStruct_t;
+ ^
+../src/IOTask.h:66:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GyroCaliStruct_t;
+ ^
+../src/IOTask.h:77:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AccCaliStruct_t;
+ ^
+../src/IOTask.h:88:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }MagCaliStruct_t;
+ ^
+../src/IOTask.h:97:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }PIDParamStruct_t;
+ ^
+../src/IOTask.h:111:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AppParam_t;
+ ^
+../src/IOTask.c: In function 'AppParamSave':
+../src/IOTask.c:45:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../src/IOTask.c: At top level:
+../src/IOTask.c:26:26: warning: 'upload_type' defined but not used [-Wunused-variable]
+ static UploadParamType_e upload_type = REIMU;  //上传数据的类型
+                          ^
+../src/IOTask.c: In function 'GimbalCaliProcess':
+../src/IOTask.c:378:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+../src/IOTask.c: In function 'GyroCaliProcess':
+../src/IOTask.c:418:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+../src/IOTask.c: In function 'MagEndCaliProcess':
+../src/IOTask.c:448:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+'Finished building: ../src/IOTask.c'
+' '
+'Building file: ../src/RemoteTask.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/RemoteTask.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../complex_prj_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/RemoteTask.d" -MT"src/RemoteTask.o" -o "src/RemoteTask.o" "../src/RemoteTask.c"
+In file included from ../src/main.h:31:0,
+                 from ../src/RemoteTask.c:2:
+../src/IOTask.h:58:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GimbalCaliStruct_t;
+ ^
+../src/IOTask.h:66:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GyroCaliStruct_t;
+ ^
+../src/IOTask.h:77:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AccCaliStruct_t;
+ ^
+../src/IOTask.h:88:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }MagCaliStruct_t;
+ ^
+../src/IOTask.h:97:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }PIDParamStruct_t;
+ ^
+../src/IOTask.h:111:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AppParam_t;
+ ^
+'Finished building: ../src/RemoteTask.c'
+' '
+'Building file: ../src/Uart_0.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/Uart_0.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../complex_prj_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/Uart_0.d" -MT"src/Uart_0.o" -o "src/Uart_0.o" "../src/Uart_0.c"
+In file included from ../src/main.h:31:0,
+                 from ../src/Uart_0.c:3:
+../src/IOTask.h:58:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GimbalCaliStruct_t;
+ ^
+../src/IOTask.h:66:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GyroCaliStruct_t;
+ ^
+../src/IOTask.h:77:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AccCaliStruct_t;
+ ^
+../src/IOTask.h:88:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }MagCaliStruct_t;
+ ^
+../src/IOTask.h:97:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }PIDParamStruct_t;
+ ^
+../src/IOTask.h:111:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AppParam_t;
+ ^
+'Finished building: ../src/Uart_0.c'
+' '
+'Building file: ../src/imu.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/imu.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../complex_prj_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/imu.d" -MT"src/imu.o" -o "src/imu.o" "../src/imu.c"
+In file included from ../src/main.h:31:0,
+                 from ../src/imu.c:1:
+../src/IOTask.h:58:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GimbalCaliStruct_t;
+ ^
+../src/IOTask.h:66:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GyroCaliStruct_t;
+ ^
+../src/IOTask.h:77:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AccCaliStruct_t;
+ ^
+../src/IOTask.h:88:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }MagCaliStruct_t;
+ ^
+../src/IOTask.h:97:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }PIDParamStruct_t;
+ ^
+../src/IOTask.h:111:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AppParam_t;
+ ^
+../src/imu.c: In function 'IMU_getValues':
+../src/imu.c:225:2: warning: multi-line comment [-Wcomment]
+  //printf("GYRO_receive = %x ACC_Z_receive = %x \n\r",MPU6050_Raw_Data.Accel_X,\
+  ^
+../src/imu.c:236:24: warning: passing argument 1 of 'HMC58X3_mgetValues' discards 'volatile' qualifier from pointer target type
+     HMC58X3_mgetValues(&values[6]); //读取磁力计的ADC值
+                        ^
+In file included from ../src/main.h:29:0,
+                 from ../src/imu.c:1:
+../src/mpu6050_driver.h:202:6: note: expected 'float *' but argument is of type 'volatile float *'
+ void HMC58X3_mgetValues(float *arry);
+      ^
+../src/imu.c:240:2: warning: multi-line comment [-Wcomment]
+  // printf("Mag_X = %f Mag_Y = %f Mag_Z = %f\n\r",values[6],\
+  ^
+'Finished building: ../src/imu.c'
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../complex_prj_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+In file included from ../src/main.h:31:0,
+                 from ../src/main.c:4:
+../src/IOTask.h:58:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GimbalCaliStruct_t;
+ ^
+../src/IOTask.h:66:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GyroCaliStruct_t;
+ ^
+../src/IOTask.h:77:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AccCaliStruct_t;
+ ^
+../src/IOTask.h:88:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }MagCaliStruct_t;
+ ^
+../src/IOTask.h:97:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }PIDParamStruct_t;
+ ^
+../src/IOTask.h:111:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AppParam_t;
+ ^
+'Finished building: ../src/main.c'
+' '
+'Building file: ../src/mpu6050_driver.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/mpu6050_driver.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../complex_prj_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/mpu6050_driver.d" -MT"src/mpu6050_driver.o" -o "src/mpu6050_driver.o" "../src/mpu6050_driver.c"
+In file included from ../src/main.h:31:0,
+                 from ../src/mpu6050_driver.c:1:
+../src/IOTask.h:58:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GimbalCaliStruct_t;
+ ^
+../src/IOTask.h:66:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GyroCaliStruct_t;
+ ^
+../src/IOTask.h:77:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AccCaliStruct_t;
+ ^
+../src/IOTask.h:88:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }MagCaliStruct_t;
+ ^
+../src/IOTask.h:97:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }PIDParamStruct_t;
+ ^
+../src/IOTask.h:111:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AppParam_t;
+ ^
+../src/mpu6050_driver.c: In function 'MPU6050_Init':
+../src/mpu6050_driver.c:17:19: warning: unused variable 'temp_data' [-Wunused-variable]
+     unsigned char temp_data = 0x00;
+                   ^
+../src/mpu6050_driver.c: In function 'MPU6050_EnableInt':
+../src/mpu6050_driver.c:76:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+'Finished building: ../src/mpu6050_driver.c'
+' '
+'Building file: ../src/pid.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/pid.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../complex_prj_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/pid.d" -MT"src/pid.o" -o "src/pid.o" "../src/pid.c"
+In file included from ../src/main.h:31:0,
+                 from ../src/pid.c:1:
+../src/IOTask.h:58:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GimbalCaliStruct_t;
+ ^
+../src/IOTask.h:66:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GyroCaliStruct_t;
+ ^
+../src/IOTask.h:77:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AccCaliStruct_t;
+ ^
+../src/IOTask.h:88:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }MagCaliStruct_t;
+ ^
+../src/IOTask.h:97:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }PIDParamStruct_t;
+ ^
+../src/IOTask.h:111:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AppParam_t;
+ ^
+'Finished building: ../src/pid.c'
+' '
+'Building file: ../src/scutimer.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/scutimer.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../complex_prj_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/scutimer.d" -MT"src/scutimer.o" -o "src/scutimer.o" "../src/scutimer.c"
+In file included from ../src/main.h:31:0,
+                 from ../src/scutimer.c:2:
+../src/IOTask.h:58:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GimbalCaliStruct_t;
+ ^
+../src/IOTask.h:66:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GyroCaliStruct_t;
+ ^
+../src/IOTask.h:77:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AccCaliStruct_t;
+ ^
+../src/IOTask.h:88:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }MagCaliStruct_t;
+ ^
+../src/IOTask.h:97:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }PIDParamStruct_t;
+ ^
+../src/IOTask.h:111:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AppParam_t;
+ ^
+../src/scutimer.c: In function 'TimerIntrHandler':
+../src/scutimer.c:193:7: warning: multi-line comment [-Wcomment]
+       // printf("GYRO_receive = %x ACC_Z_receive = %x \n\r",MPU6050_Raw_Data.Accel_X,\
+       ^
+../src/scutimer.c:198:3: warning: multi-line comment [-Wcomment]
+   // printf("Mag_X = %d Mag_Y = %d Mag_Z = %d\n\r",MPU6050_Raw_Data.Mag_X,\
+   ^
+'Finished building: ../src/scutimer.c'
+' '
+'Building target: complex_prj.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../complex_prj_bsp/ps7_cortexa9_0/lib -o "complex_prj.elf"  ./src/CanBusTask.o ./src/ControlTask.o ./src/IIC_API.o ./src/IOTask.o ./src/RemoteTask.o ./src/Uart_0.o ./src/imu.o ./src/main.o ./src/mpu6050_driver.o ./src/pid.o ./src/scutimer.o   -lm -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+./src/ControlTask.o: In function `SetGimbalMotorOutput':
+C:\Users\bing\temp\vivado_test\DJ_0\DJ_0.sdk\complex_prj\Debug/../src/ControlTask.c:288: undefined reference to `Is_Serious_Error'
+collect2.exe: error: ld returned 1 exit status
+make: *** [complex_prj.elf] 错误 1
+17:29:03 **** Auto Build of configuration Debug for project complex_prj ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/ControlTask.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/ControlTask.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../complex_prj_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/ControlTask.d" -MT"src/ControlTask.o" -o "src/ControlTask.o" "../src/ControlTask.c"
+In file included from ../src/main.h:31:0,
+                 from ../src/ControlTask.c:1:
+../src/IOTask.h:58:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GimbalCaliStruct_t;
+ ^
+../src/IOTask.h:66:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GyroCaliStruct_t;
+ ^
+../src/IOTask.h:77:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AccCaliStruct_t;
+ ^
+../src/IOTask.h:88:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }MagCaliStruct_t;
+ ^
+../src/IOTask.h:97:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }PIDParamStruct_t;
+ ^
+../src/IOTask.h:111:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AppParam_t;
+ ^
+'Finished building: ../src/ControlTask.c'
+' '
+'Building target: complex_prj.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../complex_prj_bsp/ps7_cortexa9_0/lib -o "complex_prj.elf"  ./src/CanBusTask.o ./src/ControlTask.o ./src/IIC_API.o ./src/IOTask.o ./src/RemoteTask.o ./src/Uart_0.o ./src/imu.o ./src/main.o ./src/mpu6050_driver.o ./src/pid.o ./src/scutimer.o   -lm -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: complex_prj.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size complex_prj.elf  |tee "complex_prj.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 122064	   4936	  25132	 152132	  25244	complex_prj.elf
+'Finished building: complex_prj.elf.size'
+' '
+17:29:22 **** Auto Build of configuration Debug for project complex_prj ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/scutimer.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/scutimer.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../complex_prj_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/scutimer.d" -MT"src/scutimer.o" -o "src/scutimer.o" "../src/scutimer.c"
+In file included from ../src/main.h:31:0,
+                 from ../src/scutimer.c:2:
+../src/IOTask.h:58:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GimbalCaliStruct_t;
+ ^
+../src/IOTask.h:66:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GyroCaliStruct_t;
+ ^
+../src/IOTask.h:77:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AccCaliStruct_t;
+ ^
+../src/IOTask.h:88:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }MagCaliStruct_t;
+ ^
+../src/IOTask.h:97:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }PIDParamStruct_t;
+ ^
+../src/IOTask.h:111:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AppParam_t;
+ ^
+../src/scutimer.c: In function 'TimerIntrHandler':
+../src/scutimer.c:193:7: warning: multi-line comment [-Wcomment]
+       // printf("GYRO_receive = %x ACC_Z_receive = %x \n\r",MPU6050_Raw_Data.Accel_X,\
+       ^
+../src/scutimer.c:198:3: warning: multi-line comment [-Wcomment]
+   // printf("Mag_X = %d Mag_Y = %d Mag_Z = %d\n\r",MPU6050_Raw_Data.Mag_X,\
+   ^
+'Finished building: ../src/scutimer.c'
+' '
+'Building target: complex_prj.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../complex_prj_bsp/ps7_cortexa9_0/lib -o "complex_prj.elf"  ./src/CanBusTask.o ./src/ControlTask.o ./src/IIC_API.o ./src/IOTask.o ./src/RemoteTask.o ./src/Uart_0.o ./src/imu.o ./src/main.o ./src/mpu6050_driver.o ./src/pid.o ./src/scutimer.o   -lm -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: complex_prj.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size complex_prj.elf  |tee "complex_prj.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 122000	   4936	  25132	 152068	  25204	complex_prj.elf
+'Finished building: complex_prj.elf.size'
+' '

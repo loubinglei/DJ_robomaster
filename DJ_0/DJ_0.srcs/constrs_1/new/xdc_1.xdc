@@ -13,3 +13,8 @@ set_property PACKAGE_PIN R14 [get_ports UART0_RX]
 set_property PACKAGE_PIN V18 [get_ports UART0_TX]
 set_property PULLUP true [get_ports UART0_RX]
 set_property PULLUP true [get_ports UART0_TX]
+
+set_property PACKAGE_PIN V13 [get_ports iic_0_scl_io]
+set_property PACKAGE_PIN U17 [get_ports iic_0_sda_io]
+set_property IOSTANDARD LVCMOS33 [get_ports iic_0_scl_io]
+set_property IOSTANDARD LVCMOS33 [get_ports iic_0_sda_io]

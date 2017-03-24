@@ -1,7 +1,7 @@
 //Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2016.2 (win64) Build 1577090 Thu Jun  2 16:32:40 MDT 2016
-//Date        : Tue Mar 07 16:14:22 2017
+//Date        : Tue Mar 21 15:53:46 2017
 //Host        : DESKTOP-6T2CTD3 running 64-bit major release  (build 9200)
 //Command     : generate_target design_1_wrapper.bd
 //Design      : design_1_wrapper
@@ -32,7 +32,9 @@ module design_1_wrapper
     FIXED_IO_ps_porb,
     FIXED_IO_ps_srstb,
     UART0_RX,
-    UART0_TX);
+    UART0_TX,
+    iic_0_scl_io,
+    iic_0_sda_io);
   inout [14:0]DDR_addr;
   inout [2:0]DDR_ba;
   inout DDR_cas_n;
@@ -56,6 +58,8 @@ module design_1_wrapper
   inout FIXED_IO_ps_srstb;
   input UART0_RX;
   output UART0_TX;
+  inout iic_0_scl_io;
+  inout iic_0_sda_io;
 
   wire [14:0]DDR_addr;
   wire [2:0]DDR_ba;
@@ -80,6 +84,14 @@ module design_1_wrapper
   wire FIXED_IO_ps_srstb;
   wire UART0_RX;
   wire UART0_TX;
+  wire iic_0_scl_i;
+  wire iic_0_scl_io;
+  wire iic_0_scl_o;
+  wire iic_0_scl_t;
+  wire iic_0_sda_i;
+  wire iic_0_sda_io;
+  wire iic_0_sda_o;
+  wire iic_0_sda_t;
 
   design_1 design_1_i
        (.DDR_addr(DDR_addr),
@@ -103,6 +115,22 @@ module design_1_wrapper
         .FIXED_IO_ps_clk(FIXED_IO_ps_clk),
         .FIXED_IO_ps_porb(FIXED_IO_ps_porb),
         .FIXED_IO_ps_srstb(FIXED_IO_ps_srstb),
+        .IIC_0_scl_i(iic_0_scl_i),
+        .IIC_0_scl_o(iic_0_scl_o),
+        .IIC_0_scl_t(iic_0_scl_t),
+        .IIC_0_sda_i(iic_0_sda_i),
+        .IIC_0_sda_o(iic_0_sda_o),
+        .IIC_0_sda_t(iic_0_sda_t),
         .UART0_RX(UART0_RX),
         .UART0_TX(UART0_TX));
+  IOBUF iic_0_scl_iobuf
+       (.I(iic_0_scl_o),
+        .IO(iic_0_scl_io),
+        .O(iic_0_scl_i),
+        .T(iic_0_scl_t));
+  IOBUF iic_0_sda_iobuf
+       (.I(iic_0_sda_o),
+        .IO(iic_0_sda_io),
+        .O(iic_0_sda_i),
+        .T(iic_0_sda_t));
 endmodule

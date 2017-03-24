@@ -64,9 +64,9 @@ extern int RecvFrame(XCanPs *InstancePtr,CanRxMsg* RxMessage);
 void GetEncoderBias(volatile Encoder *v, CanRxMsg * msg);
 void EncoderProcess(volatile Encoder *v, CanRxMsg * msg);
 void CanReceiveMsgProcess(CanRxMsg * msg);
-void Set_Gimbal_Current(s16 gimbal_pitch_iq, s16 gimbal_yaw_iq);
+void Set_Gimbal_Current(XCanPs *InstancePtr,s16 gimbal_pitch_iq, s16 gimbal_yaw_iq);
 void Set_CM_Speed(XCanPs *InstancePtr,s16 cm1_iq, s16 cm2_iq, s16 cm3_iq, s16 cm4_iq);
-
+void GYRO_RST(void);
 
 /************************** Variable Definitions *****************************/
 extern u32 TxFrame[XCANPS_MAX_FRAME_SIZE_IN_WORDS];

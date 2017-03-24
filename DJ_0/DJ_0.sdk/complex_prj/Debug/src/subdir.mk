@@ -9,27 +9,39 @@ LD_SRCS += \
 C_SRCS += \
 ../src/CanBusTask.c \
 ../src/ControlTask.c \
+../src/IIC_API.c \
+../src/IOTask.c \
 ../src/RemoteTask.c \
 ../src/Uart_0.c \
+../src/imu.c \
 ../src/main.c \
+../src/mpu6050_driver.c \
 ../src/pid.c \
 ../src/scutimer.c 
 
 OBJS += \
 ./src/CanBusTask.o \
 ./src/ControlTask.o \
+./src/IIC_API.o \
+./src/IOTask.o \
 ./src/RemoteTask.o \
 ./src/Uart_0.o \
+./src/imu.o \
 ./src/main.o \
+./src/mpu6050_driver.o \
 ./src/pid.o \
 ./src/scutimer.o 
 
 C_DEPS += \
 ./src/CanBusTask.d \
 ./src/ControlTask.d \
+./src/IIC_API.d \
+./src/IOTask.d \
 ./src/RemoteTask.d \
 ./src/Uart_0.d \
+./src/imu.d \
 ./src/main.d \
+./src/mpu6050_driver.d \
 ./src/pid.d \
 ./src/scutimer.d 
 

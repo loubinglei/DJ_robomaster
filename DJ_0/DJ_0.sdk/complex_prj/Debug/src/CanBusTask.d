@@ -21,11 +21,14 @@ src/CanBusTask.o src/CanBusTask.o: ../src/CanBusTask.c ../src/main.h \
  ../../complex_prj_bsp/ps7_cortexa9_0/include/xuartps_hw.h \
  ../../complex_prj_bsp/ps7_cortexa9_0/include/xplatform_info.h \
  ../../complex_prj_bsp/ps7_cortexa9_0/include/xplatform_info.h \
- ../src/scutimer.h \
+ ../../complex_prj_bsp/ps7_cortexa9_0/include/xiicps.h \
+ ../../complex_prj_bsp/ps7_cortexa9_0/include/xiicps_hw.h \
+ ../../complex_prj_bsp/ps7_cortexa9_0/include/sleep.h ../src/scutimer.h \
  ../../complex_prj_bsp/ps7_cortexa9_0/include/xscutimer.h \
  ../../complex_prj_bsp/ps7_cortexa9_0/include/xscutimer_hw.h \
  ../src/Uart_0.h ../src/RemoteTask.h ../src/ControlTask.h ../src/pid.h \
- ../src/CanBusTask.h ../src/common.h
+ ../src/CanBusTask.h ../src/common.h ../src/imu.h ../src/mpu6050_driver.h \
+ ../src/IIC_API.h ../src/IOTask.h
 
 ../src/main.h:
 
@@ -73,6 +76,12 @@ src/CanBusTask.o src/CanBusTask.o: ../src/CanBusTask.c ../src/main.h \
 
 ../../complex_prj_bsp/ps7_cortexa9_0/include/xplatform_info.h:
 
+../../complex_prj_bsp/ps7_cortexa9_0/include/xiicps.h:
+
+../../complex_prj_bsp/ps7_cortexa9_0/include/xiicps_hw.h:
+
+../../complex_prj_bsp/ps7_cortexa9_0/include/sleep.h:
+
 ../src/scutimer.h:
 
 ../../complex_prj_bsp/ps7_cortexa9_0/include/xscutimer.h:
@@ -90,3 +99,11 @@ src/CanBusTask.o src/CanBusTask.o: ../src/CanBusTask.c ../src/main.h \
 ../src/CanBusTask.h:
 
 ../src/common.h:
+
+../src/imu.h:
+
+../src/mpu6050_driver.h:
+
+../src/IIC_API.h:
+
+../src/IOTask.h:

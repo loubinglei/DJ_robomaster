@@ -141,49 +141,104 @@ static int TimerSetupIntrSystem(XScuGic *IntcInstancePtr,
  *
  *
  */
-
+static u32 count_1ms_ext=0;
 static void TimerIntrHandler(void *CallBackRef)
 {
 	XScuTimer *TimerInstancePtr = (XScuTimer *) CallBackRef;
-    static int count_1ms=0;
+    static u32 count_1ms=0;
 
 	if (XScuTimer_IsExpired(TimerInstancePtr))
 	{
 		    XScuTimer_ClearInterruptStatus(TimerInstancePtr);
-
+		    count_1ms_ext = count_1ms;
 		    count_1ms++;  //counter + 1
+		    GetPitchYawGxGyGz();
+
+			//启动后根据磁力计的数据初始化四元数
+			if(count_1ms <100)
+			{
+				Init_Quaternion();
+			}
+			//平台稳定后，复位陀螺仪模块
+			if(count_1ms == PREPARE_TIME_TICK_MS/2)
+			{
+				GYRO_RST();
+			}
+
+			//step 1: 云台控制
+			GimbalYawControlModeSwitch();   //模式切换处理，得到位置环的设定值和给定值
+			GMPitchControlLoop();
+			GMYawControlLoop();
+			SetGimbalMotorOutput();
+			//CalibrateLoop();   //校准任务，当接收到校准命令后才有效执行，否则直接跳过
+
+		//	WorkStateFSM(count_1ms);
+		//	WorkStateSwitchProcess();
+			//启动后根据磁力计的数据初始化四元数
+		//	if(count_1ms<100)
+		//	{
+		//		Init_Quaternion();
+		//	}
 		    //xil_printf("***********1ms**************\n\r");
 		    if(count_1ms % 1000 ==0) //1S进一次    用于串口打印
 		    {
 		    	//打印遥控器数据
-				printf("ch0 = %d ch1 = %d ch2 = %d ch3 = %d\n",\
+/*				printf("ch0 = %d ch1 = %d ch2 = %d ch3 = %d\n",\
 						RC_CtrlData.rc.ch0,RC_CtrlData.rc.ch1,RC_CtrlData.rc.ch2,RC_CtrlData.rc.ch3);
 				printf("s1 = %d s2 = %d\n",RC_CtrlData.rc.s1,RC_CtrlData.rc.s2);
 				printf("key = %d\n",RC_CtrlData.key.v);
 				xil_printf("*************************************************************\n\r");
+*/
+		    	//MPU6050打印任务angle
+		    //	printf("GYRO_receive = %x ACC_Z_receive = %x \n\r",MPU6050_Raw_Data.Accel_X,\
+		   // 			MPU6050_Raw_Data.Gyro_X);
+		   	printf("yaw_angle = %f pitch_angle = %f roll_angle = %f\n\r",yaw_angle,\
+		   			pitch_angle,\
+					roll_angle);
+		//	printf("Mag_X = %d Mag_Y = %d Mag_Z = %d\n\r",MPU6050_Raw_Data.Mag_X,\
+		//			MPU6050_Raw_Data.Mag_Y,\
+		//			MPU6050_Raw_Data.Mag_Z);
+//
+		    	//xil_printf("*************************************************************\n\r");
 		    }
 		    if(count_1ms % 4 ==0) //4mS进一次        4ms == motor control frequency
 		    {
 		    	//底盘控制任务
 
-			   CMControlLoop();
+	//		   CMControlLoop();
 		    }
 		    if(count_1ms % 4 ==2)
 		    {
-				RecvFrame(CanInstPtr_1,&rx_message);   //接收can
-				CanReceiveMsgProcess(&rx_message);    //处理can接收的数据
+		    	//IIC_Read(MPU6050_SLAVE_ADDR,0x3B,MPU6050_receive  ,16);
+
+	//			RecvFrame(CanInstPtr_1,&rx_message);   //接收can
+	//			CanReceiveMsgProcess(&rx_message);    //处理can接收的数据
 	/*			printf("CMxSpeedPID.Ref = %f %f %f %f\n",CM1SpeedPID.Ref,\
 						CM2SpeedPID.Ref,\
 						CM3SpeedPID.Ref,\
 						CM4SpeedPID.Ref);
 */
-				printf("CMxSpeedPID.Fdb = %f %f %f %f\n",CM1SpeedPID.Fdb,\
+/*				printf("CMxSpeedPID.Fdb = %f %f %f %f\n",CM1SpeedPID.Fdb,\
 						CM2SpeedPID.Fdb,\
 						CM3SpeedPID.Fdb,\
 						CM4SpeedPID.Fdb);
+*/
+		    }
+		    if(count_1ms % 4 ==3)
+		    {
+		    	GYRO_receive = (MPU6050_receive[10]<<8) + (MPU6050_receive[11]);
+				if(GYRO_receive>32768){GYRO_receive-=65536;}
+
+				ACC_Z_receive = (MPU6050_receive[0]<<8) + (MPU6050_receive[1]);
+				if(ACC_Z_receive>32768){ACC_Z_receive-=65536;}
 
 		    }
 	}
+}
+
+uint32_t Get_Time_Micros(void)
+{
+	return count_1ms_ext;
 }
 /*
 static void TimerDisableIntrSystem(XScuGic *IntcInstancePtr, u16 TimerIntrId)

@@ -1,8 +1,50 @@
-10:58:54 **** Incremental Build of configuration Debug for project complex_prj ****
+17:29:22 **** Auto Build of configuration Debug for project complex_prj ****
 make pre-build main-build 
 a9-linaro-pre-build-step
 ' '
-make: Nothing to be done for `main-build'.
+'Building file: ../src/scutimer.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/scutimer.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../complex_prj_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/scutimer.d" -MT"src/scutimer.o" -o "src/scutimer.o" "../src/scutimer.c"
+In file included from ../src/main.h:31:0,
+                 from ../src/scutimer.c:2:
+../src/IOTask.h:58:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GimbalCaliStruct_t;
+ ^
+../src/IOTask.h:66:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }GyroCaliStruct_t;
+ ^
+../src/IOTask.h:77:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AccCaliStruct_t;
+ ^
+../src/IOTask.h:88:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }MagCaliStruct_t;
+ ^
+../src/IOTask.h:97:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }PIDParamStruct_t;
+ ^
+../src/IOTask.h:111:1: warning: '__packed__' attribute ignored [-Wattributes]
+ }AppParam_t;
+ ^
+../src/scutimer.c: In function 'TimerIntrHandler':
+../src/scutimer.c:193:7: warning: multi-line comment [-Wcomment]
+       // printf("GYRO_receive = %x ACC_Z_receive = %x \n\r",MPU6050_Raw_Data.Accel_X,\
+       ^
+../src/scutimer.c:198:3: warning: multi-line comment [-Wcomment]
+   // printf("Mag_X = %d Mag_Y = %d Mag_Z = %d\n\r",MPU6050_Raw_Data.Mag_X,\
+   ^
+'Finished building: ../src/scutimer.c'
+' '
+'Building target: complex_prj.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../complex_prj_bsp/ps7_cortexa9_0/lib -o "complex_prj.elf"  ./src/CanBusTask.o ./src/ControlTask.o ./src/IIC_API.o ./src/IOTask.o ./src/RemoteTask.o ./src/Uart_0.o ./src/imu.o ./src/main.o ./src/mpu6050_driver.o ./src/pid.o ./src/scutimer.o   -lm -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: complex_prj.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size complex_prj.elf  |tee "complex_prj.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 122000	   4936	  25132	 152068	  25204	complex_prj.elf
+'Finished building: complex_prj.elf.size'
+' '
 
-10:58:54 Build Finished (took 180ms)
+17:29:23 Build Finished (took 1s.277ms)
 

@@ -56,6 +56,13 @@
 `timescale 1ns/1ps
 
 module design_1_processing_system7_0_0 (
+I2C0_SDA_I, 
+I2C0_SDA_O, 
+I2C0_SDA_T, 
+I2C0_SCL_I, 
+I2C0_SCL_O, 
+I2C0_SCL_T, 
+SDIO0_WP, 
 UART0_TX, 
 UART0_RX, 
 FCLK_RESET0_N, 
@@ -81,6 +88,13 @@ PS_SRSTB,
 PS_CLK, 
 PS_PORB 
 );
+input I2C0_SDA_I;
+output I2C0_SDA_O;
+output I2C0_SDA_T;
+input I2C0_SCL_I;
+output I2C0_SCL_O;
+output I2C0_SCL_T;
+input SDIO0_WP;
 output UART0_TX;
 input UART0_RX;
 output FCLK_RESET0_N;

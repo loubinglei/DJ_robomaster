@@ -1,7 +1,7 @@
 //Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2016.2 (win64) Build 1577090 Thu Jun  2 16:32:40 MDT 2016
-//Date        : Tue Mar 07 16:14:22 2017
+//Date        : Tue Mar 21 15:53:46 2017
 //Host        : DESKTOP-6T2CTD3 running 64-bit major release  (build 9200)
 //Command     : generate_target design_1.bd
 //Design      : design_1
@@ -32,6 +32,12 @@ module design_1
     FIXED_IO_ps_clk,
     FIXED_IO_ps_porb,
     FIXED_IO_ps_srstb,
+    IIC_0_scl_i,
+    IIC_0_scl_o,
+    IIC_0_scl_t,
+    IIC_0_sda_i,
+    IIC_0_sda_o,
+    IIC_0_sda_t,
     UART0_RX,
     UART0_TX);
   inout [14:0]DDR_addr;
@@ -55,6 +61,12 @@ module design_1
   inout FIXED_IO_ps_clk;
   inout FIXED_IO_ps_porb;
   inout FIXED_IO_ps_srstb;
+  input IIC_0_scl_i;
+  output IIC_0_scl_o;
+  output IIC_0_scl_t;
+  input IIC_0_sda_i;
+  output IIC_0_sda_o;
+  output IIC_0_sda_t;
   input UART0_RX;
   output UART0_TX;
 
@@ -80,10 +92,22 @@ module design_1
   wire processing_system7_0_FIXED_IO_PS_CLK;
   wire processing_system7_0_FIXED_IO_PS_PORB;
   wire processing_system7_0_FIXED_IO_PS_SRSTB;
+  wire processing_system7_0_IIC_0_SCL_I;
+  wire processing_system7_0_IIC_0_SCL_O;
+  wire processing_system7_0_IIC_0_SCL_T;
+  wire processing_system7_0_IIC_0_SDA_I;
+  wire processing_system7_0_IIC_0_SDA_O;
+  wire processing_system7_0_IIC_0_SDA_T;
   wire processing_system7_0_UART0_TX;
 
+  assign IIC_0_scl_o = processing_system7_0_IIC_0_SCL_O;
+  assign IIC_0_scl_t = processing_system7_0_IIC_0_SCL_T;
+  assign IIC_0_sda_o = processing_system7_0_IIC_0_SDA_O;
+  assign IIC_0_sda_t = processing_system7_0_IIC_0_SDA_T;
   assign UART0_RX_1 = UART0_RX;
   assign UART0_TX = processing_system7_0_UART0_TX;
+  assign processing_system7_0_IIC_0_SCL_I = IIC_0_scl_i;
+  assign processing_system7_0_IIC_0_SDA_I = IIC_0_sda_i;
   design_1_processing_system7_0_0 processing_system7_0
        (.DDR_Addr(DDR_addr[14:0]),
         .DDR_BankAddr(DDR_ba[2:0]),
@@ -102,10 +126,17 @@ module design_1
         .DDR_VRN(FIXED_IO_ddr_vrn),
         .DDR_VRP(FIXED_IO_ddr_vrp),
         .DDR_WEB(DDR_we_n),
+        .I2C0_SCL_I(processing_system7_0_IIC_0_SCL_I),
+        .I2C0_SCL_O(processing_system7_0_IIC_0_SCL_O),
+        .I2C0_SCL_T(processing_system7_0_IIC_0_SCL_T),
+        .I2C0_SDA_I(processing_system7_0_IIC_0_SDA_I),
+        .I2C0_SDA_O(processing_system7_0_IIC_0_SDA_O),
+        .I2C0_SDA_T(processing_system7_0_IIC_0_SDA_T),
         .MIO(FIXED_IO_mio[53:0]),
         .PS_CLK(FIXED_IO_ps_clk),
         .PS_PORB(FIXED_IO_ps_porb),
         .PS_SRSTB(FIXED_IO_ps_srstb),
+        .SDIO0_WP(1'b0),
         .UART0_RX(UART0_RX_1),
         .UART0_TX(processing_system7_0_UART0_TX));
 endmodule

@@ -167,9 +167,9 @@ void RemoteDataPrcess(uint8_t *pData)
     RC_CtrlData.key.v = ((int16_t)pData[14]);// | ((int16_t)pData[15] << 8);
 	
 	SetInputMode(&RC_CtrlData.rc);
-	RemoteControlProcess(&(RC_CtrlData.rc));  //暂时不选择模式，默认遥控器模式
+	//RemoteControlProcess(&(RC_CtrlData.rc));  //暂时不选择模式，默认遥控器模式
 	
-/*	switch(GetInputMode())
+	switch(GetInputMode())
 	{
 		case REMOTE_INPUT:
 		{
@@ -185,14 +185,28 @@ void RemoteDataPrcess(uint8_t *pData)
 			//紧急停车
 		}break;
 	}
-*/
 }
 //遥控器控制模式处理
 void RemoteControlProcess(Remote *rc)
 {
+    if(GetWorkState()!=PREPARE_STATE)
+    {
+        ChassisSpeedRef.forward_back_ref = (rc->ch1 - (int16_t)REMOTE_CONTROLLER_STICK_OFFSET) * STICK_TO_CHASSIS_SPEED_REF_FACT;
+        ChassisSpeedRef.left_right_ref   = (rc->ch0 - (int16_t)REMOTE_CONTROLLER_STICK_OFFSET) * STICK_TO_CHASSIS_SPEED_REF_FACT;
+    }
+
+    if(GetWorkState() == NORMAL_STATE)
+    {
+        GimbalRef.pitch_angle_dynamic_ref += (rc->ch3 - (int16_t)REMOTE_CONTROLLER_STICK_OFFSET) * STICK_TO_PITCH_ANGLE_INC_FACT;
+        GimbalRef.yaw_angle_dynamic_ref   += (rc->ch2 - (int16_t)REMOTE_CONTROLLER_STICK_OFFSET) * STICK_TO_YAW_ANGLE_INC_FACT;
+	}
 	
-    ChassisSpeedRef.forward_back_ref = (rc->ch1 - (s16)REMOTE_CONTROLLER_STICK_OFFSET) * STICK_TO_CHASSIS_SPEED_REF_FACT;
-    ChassisSpeedRef.left_right_ref   = (rc->ch0 - (s16)REMOTE_CONTROLLER_STICK_OFFSET) * STICK_TO_CHASSIS_SPEED_REF_FACT;
+	/* not used to control, just as a flag */
+    GimbalRef.pitch_speed_ref = rc->ch3 - (int16_t)REMOTE_CONTROLLER_STICK_OFFSET;    //speed_ref仅作输入量判断用
+    GimbalRef.yaw_speed_ref   = (rc->ch2 - (int16_t)REMOTE_CONTROLLER_STICK_OFFSET);
+	GimbalAngleLimit();
+	//遥控器拨杆数据处理
+	//RemoteShootControl(&switch1, rc->s1);
 
 }
 

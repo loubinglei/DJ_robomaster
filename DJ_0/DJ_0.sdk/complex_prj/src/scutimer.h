@@ -17,6 +17,8 @@
 int ScuTimerIntrExample(XScuGic *IntcInstancePtr, XScuTimer * TimerInstancePtr,
 			u16 TimerDeviceId, u16 TimerIntrId);
 
+uint32_t Get_Time_Micros(void);
+
 /************************** Variable Definitions *****************************/
 
 XScuTimer TimerInstance;	/* Cortex A9 Scu Private Timer Instance */

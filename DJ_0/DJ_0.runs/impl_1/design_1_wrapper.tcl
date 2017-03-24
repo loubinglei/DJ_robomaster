@@ -48,18 +48,13 @@ set_msg_config -id {HDL 9-1654} -limit 100000
 start_step init_design
 set rc [catch {
   create_msg_db init_design.pb
-  set_property design_mode GateLvl [current_fileset]
-  set_param project.singleFileAddWarning.threshold 0
+  reset_param project.defaultXPMLibraries 
+  open_checkpoint C:/Users/bing/temp/vivado_test/DJ_0/DJ_0.runs/impl_1/design_1_wrapper.dcp
   set_property webtalk.parent_dir C:/Users/bing/temp/vivado_test/DJ_0/DJ_0.cache/wt [current_project]
   set_property parent.project_path C:/Users/bing/temp/vivado_test/DJ_0/DJ_0.xpr [current_project]
   set_property ip_repo_paths c:/Users/bing/temp/vivado_test/DJ_0/DJ_0.cache/ip [current_project]
   set_property ip_output_repo c:/Users/bing/temp/vivado_test/DJ_0/DJ_0.cache/ip [current_project]
   set_property XPM_LIBRARIES XPM_CDC [current_project]
-  add_files -quiet C:/Users/bing/temp/vivado_test/DJ_0/DJ_0.runs/synth_1/design_1_wrapper.dcp
-  read_xdc -ref design_1_processing_system7_0_0 -cells inst c:/Users/bing/temp/vivado_test/DJ_0/DJ_0.srcs/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0.xdc
-  set_property processing_order EARLY [get_files c:/Users/bing/temp/vivado_test/DJ_0/DJ_0.srcs/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0.xdc]
-  read_xdc C:/Users/bing/temp/vivado_test/DJ_0/DJ_0.srcs/constrs_1/new/xdc_1.xdc
-  link_design -top design_1_wrapper -part xc7z010clg400-1
   write_hwdef -file design_1_wrapper.hwdef
   close_msg_db -file init_design.pb
 } RESULT]

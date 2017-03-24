@@ -1,0 +1,7 @@
+//arch = zynq; split = false; format = BIN
+the_ROM_image:
+{
+	[bootloader]C:\Users\bing\temp\vivado_test\DJ_0\DJ_0.sdk\fsbl\Debug\fsbl.elf
+	C:\Users\bing\temp\vivado_test\DJ_0\DJ_0.sdk\design_1_wrapper_hw_platform_0\design_1_wrapper.bit
+	C:\Users\bing\temp\vivado_test\DJ_0\DJ_0.sdk\complex_prj\Debug\complex_prj.elf
+}

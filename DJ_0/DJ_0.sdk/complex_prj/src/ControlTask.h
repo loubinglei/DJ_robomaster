@@ -68,124 +68,122 @@ typedef enum
 
 //gimbal position pid control
 //20  19
-#define GIMBAL_MOTOR_PITCH_POSITION_PID_DEFAULT \
-{\
-	0,\
-	0,\
-	{0,0},\
-	PITCH_POSITION_KP_DEFAULTS,\
-	PITCH_POSITION_KI_DEFAULTS,\
-	PITCH_POSITION_KD_DEFAULTS,\
-	0,\
-	0,\
-	0,\
-	4900,\
-	1000,\
-	1500,\
-	0,\
-	4900,\
-	0,\
-	0,\
-	0,\
-	&PID_Calc,\
-	&PID_Reset,\
-}\
+#define GIMBAL_MOTOR_PITCH_POSITION_PID_DEFAULT\
+						 { 0.0f, \
+                           0.0f, \
+                           0.0f, \
+						   PITCH_POSITION_KP_DEFAULTS, \
+                           0.0f, \
+                           0.0f, \
+                           0.0f, \
+						   4900.0f, \
+						   1000.0f, \
+						   1500.0f, \
+                           0.0f, \
+                           4900.0f, \
+                           -4900.0f, \
+                           0.0f, \
+                           0.0f, \
+						   PITCH_POSITION_KI_DEFAULTS, \
+                           0.0f, \
+						   PITCH_POSITION_KD_DEFAULTS, \
+                           0.0f, \
+              			  &pid_calc,\
+											&pid_clear}\
 
 //gimbal speed pid control
-#define GIMBAL_MOTOR_PITCH_SPEED_PID_DEFAULT \
-{\
-	0,\
-	0,\
-	{0,0},\
-	PITCH_SPEED_KP_DEFAULTS,\
-	PITCH_SPEED_KI_DEFAULTS,\
-	PITCH_SPEED_KD_DEFAULTS,\
-	0,\
-	0,\
-	0,\
-	4900,\
-	1000,\
-	1500,\
-	0,\
-	4900,\
-	0,\
-	0,\
-	0,\
-	&PID_Calc,\
-	&PID_Reset,\
-}\
-
+#define GIMBAL_MOTOR_PITCH_SPEED_PID_DEFAULT\
+						 { 0.0f, \
+                           0.0f, \
+                           0.0f, \
+						   PITCH_SPEED_KP_DEFAULTS, \
+                           0.0f, \
+                           0.0f, \
+                           0.0f, \
+						   4900.0f, \
+						   1000.0f, \
+						   1500.0f, \
+                           0.0f, \
+                           4900.0f, \
+                           -4900.0f, \
+                           0.0f, \
+                           0.0f, \
+						   PITCH_SPEED_KI_DEFAULTS, \
+                           0.0f, \
+						   PITCH_SPEED_KD_DEFAULTS, \
+                           0.0f, \
+              			  &pid_calc,\
+											&pid_clear}\
 //gimbal yaw position pid control
-#define GIMBAL_MOTOR_YAW_POSITION_PID_DEFAULT \
-{\
-	0,\
-	0,\
-	{0,0},\
-	YAW_POSITION_KP_DEFAULTS,\
-	YAW_POSITION_KI_DEFAULTS,\
-	YAW_POSITION_KD_DEFAULTS,\
-	0,\
-	0,\
-	0,\
-	4900,\
-	1000,\
-	1500,\
-	0,\
-	5000,\
-	0,\
-	0,\
-	0,\
-	&PID_Calc,\
-	&PID_Reset,\
-}\
-
+#define GIMBAL_MOTOR_YAW_POSITION_PID_DEFAULT\
+						 { 0.0f, \
+                           0.0f, \
+                           0.0f, \
+						   YAW_POSITION_KP_DEFAULTS, \
+                           0.0f, \
+                           0.0f, \
+                           0.0f, \
+						   4900.0f, \
+						   1000.0f, \
+						   1500.0f, \
+                           0.0f, \
+                           5000.0f, \
+                           -5000.0f, \
+                           0.0f, \
+                           0.0f, \
+						   YAW_POSITION_KI_DEFAULTS, \
+                           0.0f, \
+						   YAW_POSITION_KD_DEFAULTS, \
+                           0.0f, \
+              			  &pid_calc,\
+											&pid_clear}\
 //gimbal yaw speed pid control
-#define GIMBAL_MOTOR_YAW_SPEED_PID_DEFAULT \
-{\
-	0,\
-	0,\
-	{0,0},\
-	YAW_SPEED_KP_DEFAULTS,\
-	YAW_SPEED_KI_DEFAULTS,\
-	YAW_SPEED_KD_DEFAULTS,\
-	0,\
-	0,\
-	0,\
-	4900,\
-	1000,\
-	1500,\
-	0,\
-	4900,\
-	0,\
-	0,\
-	0,\
-	&PID_Calc,\
-	&PID_Reset,\
-}\
-
+#define GIMBAL_MOTOR_YAW_SPEED_PID_DEFAULT\
+						 { 0.0f, \
+                           0.0f, \
+                           0.0f, \
+						   YAW_SPEED_KP_DEFAULTS, \
+                           0.0f, \
+                           0.0f, \
+                           0.0f, \
+						   4900.0f, \
+						   1000.0f, \
+						   1500.0f, \
+                           0.0f, \
+						   4900.0f, \
+                           -4900.0f, \
+                           0.0f, \
+                           0.0f, \
+						   YAW_SPEED_KI_DEFAULTS, \
+                           0.0f, \
+						   YAW_SPEED_KD_DEFAULTS, \
+                           0.0f, \
+              			  &pid_calc,\
+											&pid_clear}\
 //D参数原来为0.4
-#define CHASSIS_MOTOR_SPEED_PID_DEFAULT \
-{\
-	0,\
-	0,\
-	{0,0},\
-	220.f,\
-	0.0f,\
-	0.0f,\
-	0,\
-	0,\
-	0,\
-	4900,\
-	3500,\
-	1500,\
-	0,\
-	4950,\
-	0,\
-	0,\
-	0,\
-	&PID_Calc,\
-	&PID_Reset,\
-}\
+#define CHASSIS_MOTOR_SPEED_PID_DEFAULT\
+						 { 0.0f, \
+                           0.0f, \
+                           0.0f, \
+						   1.2f, \
+                           0.0f, \
+                           0.0f, \
+                           0.0f, \
+						   4900.0f, \
+						   3500.0f, \
+						   1500.0f, \
+                           0.0f, \
+                           4950.0f, \
+                           -4950.0f, \
+                           0.0f, \
+                           0.0f, \
+                           0.0f, \
+                           0.0f, \
+                           0.0f, \
+                           0.0f, \
+              			  &pid_calc,\
+											&pid_clear}\
+
 
 #define SHOOT_MOTOR_POSITION_PID_DEFAULT \
 {\
@@ -244,7 +242,8 @@ typedef enum
 /************************** Function Prototypes ******************************/
 WorkState_e GetWorkState(void);
 void ControtLoopTaskInit(void);
-void WorkStateFSM(void);
+void WorkStateFSM(int time_tick_1ms);
+void WorkStateSwitchProcess(void);
 void GMPitchControlLoop(void);
 void GMYawControlLoop(void);
 void GMPitchControlLoop(void);

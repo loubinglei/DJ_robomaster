@@ -2,15 +2,17 @@
    guistr: "# # String gsaved with Nlview 6.5.12  2016-01-29 bk=1.3547 VDI=39 GEI=35 GUI=JA:1.6
 #  -string -flagsOSRD
 preplace port DDR -pg 1 -y -100 -defaultsOSRD
-preplace port UART0_TX -pg 1 -y 30 -defaultsOSRD
-preplace port UART0_RX -pg 1 -y 50 -defaultsOSRD -right
+preplace port UART0_TX -pg 1 -y 0 -defaultsOSRD
+preplace port UART0_RX -pg 1 -y 20 -defaultsOSRD -right
+preplace port IIC_0 -pg 1 -y 40 -defaultsOSRD
 preplace port FIXED_IO -pg 1 -y -80 -defaultsOSRD
 preplace inst processing_system7_0 -pg 1 -lvl 1 -y 20 -defaultsOSRD
 preplace netloc processing_system7_0_DDR 1 1 1 NJ
-preplace netloc processing_system7_0_UART0_TX 1 1 1 N
+preplace netloc processing_system7_0_IIC_0 1 1 1 300
+preplace netloc processing_system7_0_UART0_TX 1 1 1 300
 preplace netloc processing_system7_0_FIXED_IO 1 1 1 NJ
-preplace netloc UART0_RX_1 1 1 1 N
-levelinfo -pg 1 -40 170 370 -top -140 -bot 140
+preplace netloc UART0_RX_1 1 1 1 310
+levelinfo -pg 1 -40 170 330 -top -120 -bot 150
 ",
 }
 {

@@ -57,6 +57,13 @@ ECK=0,C_USE_DEFAULT_ACP_USER_VAL=0,C_S_AXI_ACP_ARUSER_VAL=31,C_S_AXI_ACP_AWUSER_
 _M_AXI_GP1_THREAD_ID_WIDTH=12,C_NUM_F2P_INTR_INPUTS=1,C_IRQ_F2P_MODE=DIRECT,C_DQ_WIDTH=32,C_DQS_WIDTH=4,C_DM_WIDTH=4,C_MIO_PRIMITIVE=54,C_TRACE_INTERNAL_WIDTH=2,C_USE_AXI_NONSECURE=0,C_USE_M_AXI_GP0=0,C_USE_M_AXI_GP1=0,C_USE_S_AXI_GP0=0,C_USE_S_AXI_HP0=0,C_USE_S_AXI_HP1=0,C_USE_S_AXI_HP2=0,C_USE_S_AXI_HP3=0,C_USE_S_AXI_ACP=0,C_PS7_SI_REV=PRODUCTION,C_FCLK_CLK0_BUF=false,C_FCLK_CLK1_BUF=false,C_FCLK_CLK2_BUF=false,C_FCLK_CLK3_BUF=false,C_PACKAGE_NAME=clg400}" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module design_1_processing_system7_0_0 (
+  I2C0_SDA_I,
+  I2C0_SDA_O,
+  I2C0_SDA_T,
+  I2C0_SCL_I,
+  I2C0_SCL_O,
+  I2C0_SCL_T,
+  SDIO0_WP,
   UART0_TX,
   UART0_RX,
   FCLK_RESET0_N,
@@ -83,6 +90,20 @@ module design_1_processing_system7_0_0 (
   PS_PORB
 );
 
+(* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 IIC_0 SDA_I" *)
+input wire I2C0_SDA_I;
+(* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 IIC_0 SDA_O" *)
+output wire I2C0_SDA_O;
+(* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 IIC_0 SDA_T" *)
+output wire I2C0_SDA_T;
+(* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 IIC_0 SCL_I" *)
+input wire I2C0_SCL_I;
+(* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 IIC_0 SCL_O" *)
+output wire I2C0_SCL_O;
+(* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 IIC_0 SCL_T" *)
+output wire I2C0_SCL_T;
+(* X_INTERFACE_INFO = "xilinx.com:interface:sdio:1.0 SDIO_0 WP" *)
+input wire SDIO0_WP;
 (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 UART_0 TxD" *)
 output wire UART0_TX;
 (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 UART_0 RxD" *)
@@ -244,12 +265,12 @@ inout wire PS_PORB;
     .GPIO_I(64'B0),
     .GPIO_O(),
     .GPIO_T(),
-    .I2C0_SDA_I(1'B0),
-    .I2C0_SDA_O(),
-    .I2C0_SDA_T(),
-    .I2C0_SCL_I(1'B0),
-    .I2C0_SCL_O(),
-    .I2C0_SCL_T(),
+    .I2C0_SDA_I(I2C0_SDA_I),
+    .I2C0_SDA_O(I2C0_SDA_O),
+    .I2C0_SDA_T(I2C0_SDA_T),
+    .I2C0_SCL_I(I2C0_SCL_I),
+    .I2C0_SCL_O(I2C0_SCL_O),
+    .I2C0_SCL_T(I2C0_SCL_T),
     .I2C1_SDA_I(1'B0),
     .I2C1_SDA_O(),
     .I2C1_SDA_T(),
@@ -270,7 +291,7 @@ inout wire PS_PORB;
     .SDIO0_DATA_T(),
     .SDIO0_LED(),
     .SDIO0_CDN(1'B0),
-    .SDIO0_WP(1'B0),
+    .SDIO0_WP(SDIO0_WP),
     .SDIO0_BUSPOW(),
     .SDIO0_BUSVOLT(),
     .SDIO1_CLK(),

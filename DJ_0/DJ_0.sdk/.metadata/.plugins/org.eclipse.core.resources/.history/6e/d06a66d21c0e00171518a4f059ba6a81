@@ -1,0 +1,42 @@
+#include"main.h"
+#include "xiicps.h"
+#include "sleep.h"
+
+XIicPs Iic;
+u8 SendBuffer_IIC[TEST_BUFFER_SIZE_IIC]; /**< Buffer for Transmitting Data */
+
+ int IIC_Init(void) {
+	int Status;
+	XIicPs_Config *Config;
+
+	Config = XIicPs_LookupConfig(XPAR_XIICPS_0_DEVICE_ID);
+	if (NULL == Config) {
+		return XST_FAILURE;
+	}
+
+	Status = XIicPs_CfgInitialize(&Iic, Config, Config->BaseAddress);
+	if (Status != XST_SUCCESS) {
+		return XST_FAILURE;
+	}
+
+	XIicPs_SetSClk(&Iic, IIC_SCLK_RATE);
+	return XST_SUCCESS;
+}
+
+void IIC_Write(u8 IicAddr, u8 *SendData, int ByteCount) {
+	int Index;
+	u8 Send_Addr[2];
+	Send_Addr[0] = IicAddr;
+	Send_Addr[1] = SendData[0];
+
+	XIicPs_MasterSendPolled(&Iic, Send_Addr, 2, 0x68);
+	usleep(50 * 1000);
+}
+
+void IIC_Read(u8 IicAddr, u8 *RecvData, int ByteCount) {
+	u8 RecvAddr[1];
+	RecvAddr[0] = IicAddr;
+
+	XIicPs_MasterSendPolled(&Iic, RecvAddr, 1, 0x68);
+	XIicPs_MasterRecvPolled(&Iic, RecvData, 2, 0XE8);
+}
