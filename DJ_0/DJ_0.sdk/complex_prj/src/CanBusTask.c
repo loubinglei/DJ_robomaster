@@ -17,13 +17,13 @@ Encoder CM1Encoder = {0,0,0,0,0,0,0,0,{0},0,0,0};
 Encoder CM2Encoder = {0,0,0,0,0,0,0,0,{0},0,0,0};
 Encoder CM3Encoder = {0,0,0,0,0,0,0,0,{0},0,0,0};
 Encoder CM4Encoder = {0,0,0,0,0,0,0,0,{0},0,0,0};
-//Encoder GMYawEncoder = {0,0,0,0,0,0,0,0,{0},0,0,0};
-//Encoder GMPitchEncoder = {0,0,0,0,0,0,0,0,{0},0,0,0};
+Encoder GMYawEncoder = {0,0,0,0,0,0,0,0,{0},0,0,0};
+Encoder GMPitchEncoder = {0,0,0,0,0,0,0,0,{0},0,0,0};
 
 float ZGyroModuleAngle = 0.0f;
 
-CanRxMsg rx_message;
-
+CanRxMsg rx_message_0;
+CanRxMsg rx_message_1;
 
 
 int CanPs_Polled_init(u16 DeviceId, XCanPs *CanInstPtr)
@@ -237,38 +237,30 @@ void EncoderProcess(volatile Encoder *v, CanRxMsg * msg)
 */
 void CanReceiveMsgProcess(CanRxMsg * msg)
 {      
-        //GMYawEncoder.ecd_bias = yaw_ecd_bias;
         can_count++;
 		switch(msg->StdId)
 		{
 				case CAN_BUS2_MOTOR1_FEEDBACK_MSG_ID:
 				{
-//					LostCounterFeed(GetLostCounter(LOST_COUNTER_INDEX_MOTOR1));
 					(can_count<=50) ? GetEncoderBias(&CM1Encoder,msg):EncoderProcess(&CM1Encoder,msg);       //获取到编码器的初始偏差值
                     
 				}break;
 				case CAN_BUS2_MOTOR2_FEEDBACK_MSG_ID:
 				{
-//					LostCounterFeed(GetLostCounter(LOST_COUNTER_INDEX_MOTOR2));
 					(can_count<=50) ? GetEncoderBias(&CM2Encoder,msg):EncoderProcess(&CM2Encoder,msg);
 				}break;
 				case CAN_BUS2_MOTOR3_FEEDBACK_MSG_ID:
 				{
-//					LostCounterFeed(GetLostCounter(LOST_COUNTER_INDEX_MOTOR3));
 					(can_count<=50) ? GetEncoderBias(&CM3Encoder,msg):EncoderProcess(&CM3Encoder,msg);
 				}break;
 				case CAN_BUS2_MOTOR4_FEEDBACK_MSG_ID:
 				{
-//					LostCounterFeed(GetLostCounter(LOST_COUNTER_INDEX_MOTOR4));
 				 	(can_count<=50) ? GetEncoderBias(&CM4Encoder,msg):EncoderProcess(&CM4Encoder,msg);
 				}break;
-/*				case CAN_BUS2_MOTOR5_FEEDBACK_MSG_ID:
+				case CAN_BUS2_MOTOR5_FEEDBACK_MSG_ID:
 				{
-				LostCounterFeed(GetLostCounter(LOST_COUNTER_INDEX_MOTOR5));
-					 //GMYawEncoder.ecd_bias = yaw_ecd_bias;
-					 EncoderProcess(&GMYawEncoder);
+					 EncoderProcess(&GMYawEncoder ,msg);
 						// 比较保存编码器的值和偏差值，如果编码器的值和初始偏差之间差距超过阈值，将偏差值做处理，防止出现云台反方向运动
-					// if(can_count>=90 && can_count<=100)
 					if(GetWorkState() == PREPARE_STATE)   //准备阶段要求二者之间的差值一定不能大于阈值，否则肯定是出现了临界切换
 					 {
 							 if((GMYawEncoder.ecd_bias - GMYawEncoder.ecd_value) <-4000)
@@ -283,9 +275,7 @@ void CanReceiveMsgProcess(CanRxMsg * msg)
 				}break;
 				case CAN_BUS2_MOTOR6_FEEDBACK_MSG_ID:
 				{
-//					LostCounterFeed(GetLostCounter(LOST_COUNTER_INDEX_MOTOR6));
-						//GMPitchEncoder.ecd_bias = pitch_ecd_bias;
-						EncoderProcess(&GMPitchEncoder);
+						EncoderProcess(&GMPitchEncoder ,msg);
 						//码盘中间值设定也需要修改
 						 if(can_count<=100)
 						 {
@@ -299,23 +289,17 @@ void CanReceiveMsgProcess(CanRxMsg * msg)
 							 }
 						 }
 				}break;
-*/
-/*				case CAN_BUS1_ZGYRO_FEEDBACK_MSG_ID:
+
+				case CAN_BUS1_ZGYRO_FEEDBACK_MSG_ID:
 				{
-					LostCounterFeed(GetLostCounter(LOST_COUNTER_INDEX_ZGYRO));
-					ZGyroModuleAngle = -0.01f*((int32_t)(Data[0]<<24)|(int32_t)(Data[1]<<16) | (int32_t)(Data[2]<<8) | (int32_t)(Data[3]));
+					ZGyroModuleAngle = -0.01f*((int32_t)(msg->Data[0]<<24)|(int32_t)(msg->Data[1]<<16) | (int32_t)(msg->Data[2]<<8) | (int32_t)(msg->Data[3]));
 				}break;
-*/
+
 				default:
 				{
 				}
 		}
-		// check if deadlock, meeans the yaw angle is overflow //time should keep for a long time to avoid bug		
-/*			if(!LostCounterOverflowCheck(fabs(GMYawEncoder.ecd_angle), 70.0f) || GetWorkState() == STOP_STATE)  //如果是停止模式，一直喂狗防止重新启动失败
-			{
-				LostCounterFeed(GetLostCounter(LOST_COUNTER_INDEX_DEADLOCK));
-			}
-*/
+
 }
 
 /********************************************************************************

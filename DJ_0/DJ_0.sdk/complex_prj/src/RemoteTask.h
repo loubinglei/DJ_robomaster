@@ -11,8 +11,8 @@
 #define REMOTE_CONTROLLER_STICK_OFFSET      1024u   
 
 #define STICK_TO_CHASSIS_SPEED_REF_FACT     0.45f
-#define STICK_TO_PITCH_ANGLE_INC_FACT       0.004f
-#define STICK_TO_YAW_ANGLE_INC_FACT         0.004f
+#define STICK_TO_PITCH_ANGLE_INC_FACT       0.0002f
+#define STICK_TO_YAW_ANGLE_INC_FACT         0.0002f
 #define FRICTION_WHEEL_MAX_DUTY             1600
 
 //mouse control parameters
@@ -165,7 +165,7 @@ void RemoteShootControl(RemoteSwitch_t *sw, uint8_t val);
 void RemoteControlProcess(Remote *rc);
 
 /************************** Variable Definitions *****************************/
-extern ChassisSpeed_Ref_t ChassisSpeedRef;
+ ChassisSpeed_Ref_t ChassisSpeedRef;
 extern Gimbal_Ref_t GimbalRef;
 RC_Ctl_t RC_CtrlData;   //remote control data
 

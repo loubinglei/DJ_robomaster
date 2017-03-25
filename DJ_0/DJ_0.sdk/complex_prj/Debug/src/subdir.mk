@@ -13,6 +13,7 @@ C_SRCS += \
 ../src/IOTask.c \
 ../src/RemoteTask.c \
 ../src/Uart_0.c \
+../src/bsp.c \
 ../src/imu.c \
 ../src/main.c \
 ../src/mpu6050_driver.c \
@@ -26,6 +27,7 @@ OBJS += \
 ./src/IOTask.o \
 ./src/RemoteTask.o \
 ./src/Uart_0.o \
+./src/bsp.o \
 ./src/imu.o \
 ./src/main.o \
 ./src/mpu6050_driver.o \
@@ -39,6 +41,7 @@ C_DEPS += \
 ./src/IOTask.d \
 ./src/RemoteTask.d \
 ./src/Uart_0.d \
+./src/bsp.d \
 ./src/imu.d \
 ./src/main.d \
 ./src/mpu6050_driver.d \

@@ -6,7 +6,7 @@ PID GMPSpeedPID = GIMBAL_MOTOR_PITCH_SPEED_PID_DEFAULT;
 PID GMYPositionPID = GIMBAL_MOTOR_YAW_POSITION_PID_DEFAULT;
 PID GMYSpeedPID = GIMBAL_MOTOR_YAW_SPEED_PID_DEFAULT;
 
-//PID_Regulator_t CMRotatePID = CHASSIS_MOTOR_ROTATE_PID_DEFAULT;
+PID CMRotatePID = CHASSIS_MOTOR_ROTATE_PID_DEFAULT;
 PID CM1SpeedPID = CHASSIS_MOTOR_SPEED_PID_DEFAULT;
 PID CM2SpeedPID = CHASSIS_MOTOR_SPEED_PID_DEFAULT;
 PID CM3SpeedPID = CHASSIS_MOTOR_SPEED_PID_DEFAULT;
@@ -26,12 +26,12 @@ WorkState_e workState = PREPARE_STATE;
 *                                            FUNCTIONS 
 *********************************************************************************************************
 */
-/*
+
 static void SetWorkState(WorkState_e state)
 {
     workState = state;
 }
-*/
+
 WorkState_e GetWorkState()
 {
 	return workState;
@@ -40,24 +40,24 @@ WorkState_e GetWorkState()
 void CMControlLoop(void)
 {  
 	//底盘旋转量计算
-/*	if(GetWorkState()==PREPARE_STATE) //启动阶段，底盘不旋转
+	if(GetWorkState()==PREPARE_STATE) //启动阶段，底盘不旋转
 	{
 		ChassisSpeedRef.rotate_ref = 0;	 
 	}
 	else
 	{
 		 //底盘跟随编码器旋转PID计算
-		 CMRotatePID.ref = 0;
-		 CMRotatePID.fdb = GMYawEncoder.ecd_angle;
-		 CMRotatePID.Calc(&CMRotatePID);   
-		 ChassisSpeedRef.rotate_ref = CMRotatePID.output;
+		 CMRotatePID.Ref = 0;
+		 CMRotatePID.Fdb = GMYawEncoder.ecd_angle;
+		 CMRotatePID.calc(&CMRotatePID);
+		 ChassisSpeedRef.rotate_ref = CMRotatePID.Out;
 	}
-	if(Is_Lost_Error_Set(LOST_ERROR_RC))      //如果遥控器丢失，强制将速度设定值reset
+	if((GetWorkState() == STOP_STATE))      //如果遥控器丢失，强制将速度设定值reset
 	{
 		ChassisSpeedRef.forward_back_ref = 0;
 		ChassisSpeedRef.left_right_ref = 0;
 	}
-*/
+
 
 	//CMxSpeedPID.Ref是遥控器发来的数据 作为reference，相当于目标值，与下面的Fdb（实际值）作对比，得到偏差，作为PID的输入
 	CM1SpeedPID.Ref = 53.872*(-ChassisSpeedRef.forward_back_ref*0.075 + ChassisSpeedRef.left_right_ref*0.075);// + ChassisSpeedRef.rotate_ref;
@@ -78,10 +78,17 @@ void CMControlLoop(void)
 	CM4SpeedPID.calc(&CM4SpeedPID);
 	
 	//CM1SpeedPID.Out最大为5000，这个值是按照以前DJ工程设定的，不会有错   我试过直接赋值Set_CM_Speed(CanInstPtr_1,300,300,300,300)车子缓慢，说明5000的最大值是靠谱的
-
-	Set_CM_Speed(CanInstPtr_1,CHASSIS_SPEED_ATTENUATION * CM1SpeedPID.Out, CHASSIS_SPEED_ATTENUATION * CM2SpeedPID.Out, CHASSIS_SPEED_ATTENUATION * CM3SpeedPID.Out, CHASSIS_SPEED_ATTENUATION * CM4SpeedPID.Out);
-	//Set_CM_Speed(CanInstPtr_1,100,100,100,300);
+	 if((GetWorkState() == STOP_STATE) || GetWorkState() == CALI_STATE || GetWorkState() == PREPARE_STATE)
+	 {
+		 Set_CM_Speed(CanInstPtr_1, 0,0,0,0);
+	 }
+	 else
+	 {
+		 Set_CM_Speed(CanInstPtr_1, CHASSIS_SPEED_ATTENUATION * CM1SpeedPID.Out, CHASSIS_SPEED_ATTENUATION * CM2SpeedPID.Out, CHASSIS_SPEED_ATTENUATION * CM3SpeedPID.Out, CHASSIS_SPEED_ATTENUATION * CM4SpeedPID.Out);
+	 }
+	//Set_CM_Speed(CanInstPtr_1,4950,4950,4950,4950);
 }
+
 
 
 
@@ -195,7 +202,7 @@ void GimbalYawControlModeSwitch(void)
 		case PREPARE_STATE:   //启动过程，加入斜坡
 		{
 			GMYPositionPID.Ref = 0.0f;
-			//GMYPositionPID.Fdb = -GMYawEncoder.ecd_angle*GMYawRamp.Calc(&GMYawRamp);
+			GMYPositionPID.Fdb = -GMYawEncoder.ecd_angle;//*GMYawRamp.Calc(&GMYawRamp);
 			angleSave = ZGyroModuleAngle;			
 		}break;
 		case NORMAL_STATE:
@@ -256,11 +263,11 @@ void GMPitchControlLoop(void)
 	GMPSpeedPID.Kd = PITCH_SPEED_KD_DEFAULTS + PitchSpeedSavedPID.kd_offset;
 	
 	GMPPositionPID.Ref = GimbalRef.pitch_angle_dynamic_ref;
-//	GMPPositionPID.Fdb = -GMPitchEncoder.ecd_angle * GMPitchRamp.Calc(&GMPitchRamp);    //加入斜坡函数
+	GMPPositionPID.Fdb = -GMPitchEncoder.ecd_angle;// * GMPitchRamp.Calc(&GMPitchRamp);    //加入斜坡函数
 	GMPPositionPID.calc(&GMPPositionPID);   //得到pitch轴位置环输出控制量
 	//pitch speed control
 	GMPSpeedPID.Ref = GMPPositionPID.Out;
-	GMPSpeedPID.Fdb = MPU6050_Real_Data.Gyro_Y;
+	GMPSpeedPID.Fdb = 10.0*MPU6050_Real_Data.Gyro_Y;   //GYRO_Y有抖动，乘以0.1减小震荡
 	GMPSpeedPID.calc(&GMPSpeedPID);
 }
 
@@ -287,13 +294,13 @@ void SetGimbalMotorOutput(void)
 	//云台控制输出								
 	if((GetWorkState() == STOP_STATE) || GetWorkState() == CALI_STATE)
 	{
+		//Set_Gimbal_Current(CanInstPtr_0, -(int16_t)GMYSpeedPID.Out, -(int16_t)GMPSpeedPID.Out);
 		Set_Gimbal_Current(CanInstPtr_1, 0, 0);     //yaw + pitch
 	}
 	else
 	{		
-		Set_Gimbal_Current(CanInstPtr_1, -(int16_t)GMYSpeedPID.Out, -(int16_t)GMPSpeedPID.Out);     //yaw + pitch
+		Set_Gimbal_Current(CanInstPtr_1, 0, 1.0*(-(int16_t)GMPSpeedPID.Out));     //yaw + pitch
 	}
-
 }
 //控制任务初始化程序
 void ControtLoopTaskInit(void)
@@ -305,15 +312,15 @@ void ControtLoopTaskInit(void)
 	//校准后参数偏差值初始化
 	Sensor_Offset_Param_Init(&gAppParamStruct);
 	//设置工作模式
-//	SetWorkState(PREPARE_STATE);
+	SetWorkState(PREPARE_STATE);
 	//斜坡初始化
-/*	GMPitchRamp.SetScale(&GMPitchRamp, PREPARE_TIME_TICK_MS);
-	GMYawRamp.SetScale(&GMYawRamp, PREPARE_TIME_TICK_MS);
-	GMPitchRamp.ResetCounter(&GMPitchRamp);
-	GMYawRamp.ResetCounter(&GMYawRamp);*/
+	//GMPitchRamp.SetScale(&GMPitchRamp, PREPARE_TIME_TICK_MS);
+	//GMYawRamp.SetScale(&GMYawRamp, PREPARE_TIME_TICK_MS);
+	//GMPitchRamp.ResetCounter(&GMPitchRamp);
+	//GMYawRamp.ResetCounter(&GMYawRamp);
 	//云台给定角度初始化
-/*	GimbalRef.pitch_angle_dynamic_ref = 0.0f;
-	GimbalRef.yaw_angle_dynamic_ref = 0.0f;*/
+	GimbalRef.pitch_angle_dynamic_ref = 0.0f;
+	GimbalRef.yaw_angle_dynamic_ref = 0.0f;
     //监控任务初始化
 /*    LostCounterFeed(GetLostCounter(LOST_COUNTER_INDEX_RC));
     LostCounterFeed(GetLostCounter(LOST_COUNTER_INDEX_IMU));
@@ -328,15 +335,15 @@ void ControtLoopTaskInit(void)
     LostCounterFeed(GetLostCounter(LOST_COUNTER_INDEX_NOCALI));*/
     
 	//PID初始化
-/*	ShootMotorSpeedPID.Reset(&ShootMotorSpeedPID);
-	GMPPositionPID.Reset(&GMPPositionPID);
-	GMPSpeedPID.Reset(&GMPSpeedPID);
-	GMYPositionPID.Reset(&GMYPositionPID);
-	GMYSpeedPID.Reset(&GMYSpeedPID);
-	CMRotatePID.Reset(&CMRotatePID);
-	CM1SpeedPID.Reset(&CM1SpeedPID);
-	CM2SpeedPID.Reset(&CM2SpeedPID);
-	CM3SpeedPID.Reset(&CM3SpeedPID);
-	CM4SpeedPID.Reset(&CM4SpeedPID);*/
+//	ShootMotorSpeedPID.Reset(&ShootMotorSpeedPID);
+	GMPPositionPID.clear(&GMPPositionPID);
+	GMPSpeedPID.clear(&GMPSpeedPID);
+	GMYPositionPID.clear(&GMYPositionPID);
+	GMYSpeedPID.clear(&GMYSpeedPID);
+	CMRotatePID.clear(&CMRotatePID);
+	CM1SpeedPID.clear(&CM1SpeedPID);
+	CM2SpeedPID.clear(&CM2SpeedPID);
+	CM3SpeedPID.clear(&CM3SpeedPID);
+	CM4SpeedPID.clear(&CM4SpeedPID);
 
 }

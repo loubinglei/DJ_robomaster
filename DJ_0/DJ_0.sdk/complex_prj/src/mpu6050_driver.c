@@ -14,18 +14,7 @@ float HMC5883_lastx,HMC5883_lasty,HMC5883_lastz;
 //MPU6050 初始化，成功返回0  失败返回 0xff
 int MPU6050_Init(void)    //IIC_Write中的dev_addr 只能写0x68  不能写0xD0 不然读不到数据
 {
-    unsigned char temp_data = 0x00;
 
-    //IIC_GPIO_Init();  //初始化IIC接口
-    //HEAT_Configuration();
-    
- //   IIC_Read(MPU6050_DEVICE_ADDRESS,WHO_AM_I,&temp_data,1);
- //   if(temp_data != MPU6050_ID)
- //   {
- //       printf("error 1A\r\n");
- //       return 0xff;
- //   }
- //   printf("temp_data= %x \r\n",temp_data);
     IIC_Write(MPU6050_ID,PWR_MGMT_1  ,0x01,2);   //解除休眠状态
 
     IIC_Write(MPU6050_ID,CONFIG      ,0x03,2);   //Digital Low-Pass Filter:DLPF_CFG is 3, Fs is 1khz

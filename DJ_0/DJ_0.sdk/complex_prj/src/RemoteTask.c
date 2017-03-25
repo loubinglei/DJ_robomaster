@@ -77,6 +77,10 @@ void SetInputMode(Remote *rc)  //DJÔ´ÂëÖĞÎªS2  ´Ë´¦¸ÄÎªS1£¨Ä¿µÄÎªÁËºÍÒ£¿ØÆ÷ËµÃ÷Ê
 	{
 		inputmode = STOP;
 	}	
+	else
+	{
+		inputmode = STOP;  //ÈôÎ´´ò¿ªÒ£¿ØÆ÷£¬³õÊ¼»¯ÖµÎª0£¬ĞèÍ£Ö¹
+	}
 }
 
 InputMode_e GetInputMode()
@@ -167,8 +171,7 @@ void RemoteDataPrcess(uint8_t *pData)
     RC_CtrlData.key.v = ((int16_t)pData[14]);// | ((int16_t)pData[15] << 8);
 	
 	SetInputMode(&RC_CtrlData.rc);
-	//RemoteControlProcess(&(RC_CtrlData.rc));  //ÔİÊ±²»Ñ¡ÔñÄ£Ê½£¬Ä¬ÈÏÒ£¿ØÆ÷Ä£Ê½
-	
+
 	switch(GetInputMode())
 	{
 		case REMOTE_INPUT:
@@ -233,8 +236,8 @@ void SetFrictionState(FrictionWheelState_e v)
 //Ò£¿ØÆ÷ÊäÈëÖµÉèÖÃ£¬
 void GimbalAngleLimit()
 {
-	VAL_LIMIT(GimbalRef.pitch_angle_dynamic_ref, -PITCH_MAX+7, PITCH_MAX);
-	//VAL_LIMIT(GimbalRef.yaw_angle_dynamic_ref, GMYPositionPID.Fdb - 60, GMYPositionPID.Fdb + 60);
+	VAL_LIMIT(GimbalRef.pitch_angle_dynamic_ref, -36, 15);  //×Ô¼º²âµÄ
+	VAL_LIMIT(GimbalRef.yaw_angle_dynamic_ref, GMYPositionPID.Fdb - 60, GMYPositionPID.Fdb + 60);
 }
 
 //Ò£¿ØÆ÷Êı¾İ³õÊ¼»¯£¬Ğ±ÆÂº¯ÊıµÈµÄ³õÊ¼»¯

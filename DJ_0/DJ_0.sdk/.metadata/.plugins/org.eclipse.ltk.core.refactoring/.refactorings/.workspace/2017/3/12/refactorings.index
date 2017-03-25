@@ -1,3 +1,6 @@
 1490150100805	Delete 2 resources
 1490150243039	Delete resource 'complex_prj/src/iic.c'
 1490150247242	Delete resource 'complex_prj/src/iic.h'
+1490407434081	Delete resource 'complex_prj_bsp_xiicps_eeprom_polled_example_1'
+1490407438664	Delete resource 'complex_prj_bsp_xiicps_polled_master_example_1'
+1490407442422	Delete resource 'complex_prj_bsp_xiicps_selftest_example_1'

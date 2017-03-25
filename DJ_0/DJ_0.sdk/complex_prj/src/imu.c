@@ -45,7 +45,7 @@ float invSqrt(float x) {
 
 void Init_Quaternion()//根据测量数据，初始化q0,q1,q2.q3，从而加快收敛速度
 {
-/*	int16_t hx,hy,hz;
+	int16_t hx,hy,hz;
 	HMC58X3_getlastValues(&hx,&hy,&hz);
 	#ifdef BOARD_DOWN
 	if(hx<0 && hy <0)   //OK
@@ -194,7 +194,6 @@ void Init_Quaternion()//根据测量数据，初始化q0,q1,q2.q3，从而加快收敛速度
 	#endif
 	
 	//根据hx hy hz来判断q的值，取四个相近的值做逼近即可,初始值可以由欧拉角转换到四元数计算得到
-*/
 }
 
 

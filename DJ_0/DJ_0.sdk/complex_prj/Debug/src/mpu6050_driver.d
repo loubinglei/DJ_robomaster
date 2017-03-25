@@ -23,7 +23,8 @@ src/mpu6050_driver.o src/mpu6050_driver.o: ../src/mpu6050_driver.c \
  ../../complex_prj_bsp/ps7_cortexa9_0/include/xplatform_info.h \
  ../../complex_prj_bsp/ps7_cortexa9_0/include/xiicps.h \
  ../../complex_prj_bsp/ps7_cortexa9_0/include/xiicps_hw.h \
- ../../complex_prj_bsp/ps7_cortexa9_0/include/sleep.h ../src/scutimer.h \
+ ../../complex_prj_bsp/ps7_cortexa9_0/include/sleep.h ../src/bsp.h \
+ ../src/scutimer.h \
  ../../complex_prj_bsp/ps7_cortexa9_0/include/xscutimer.h \
  ../../complex_prj_bsp/ps7_cortexa9_0/include/xscutimer_hw.h \
  ../src/Uart_0.h ../src/RemoteTask.h ../src/ControlTask.h ../src/pid.h \
@@ -81,6 +82,8 @@ src/mpu6050_driver.o src/mpu6050_driver.o: ../src/mpu6050_driver.c \
 ../../complex_prj_bsp/ps7_cortexa9_0/include/xiicps_hw.h:
 
 ../../complex_prj_bsp/ps7_cortexa9_0/include/sleep.h:
+
+../src/bsp.h:
 
 ../src/scutimer.h:
 

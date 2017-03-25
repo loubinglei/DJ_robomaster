@@ -90,7 +90,8 @@ Encoder GMYawEncoder;
 Encoder GMPitchEncoder;
 float ZGyroModuleAngle;
 
-CanRxMsg rx_message;
+CanRxMsg rx_message_0;
+CanRxMsg rx_message_1;
 
 
 

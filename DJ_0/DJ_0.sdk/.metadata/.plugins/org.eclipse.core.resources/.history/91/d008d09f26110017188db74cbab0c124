@@ -1,0 +1,54 @@
+
+/***************************** Include Files *********************************/
+
+#include"main.h"
+//CAN BUS
+#define CAN_0_DEVICE_ID		XPAR_XCANPS_0_DEVICE_ID
+#define CAN_1_DEVICE_ID	    XPAR_XCANPS_1_DEVICE_ID
+
+
+XCanPs Can;
+//XCanPs *CanInstPtr = &Can;
+XCanPs *CanInstPtr_0 = &Can;
+XCanPs *CanInstPtr_1 = &Can;
+
+/****************************************************************************/
+/**
+*
+* This function is the main function of the Can polled example.
+*
+* @param	None
+*
+* @return
+*		- XST_SUCCESS if the example has completed successfully.
+*		- XST_FAILURE if the example has failed.
+*
+* @note		None
+*
+*****************************************************************************/
+int main()
+{
+	//int Status;
+	ControtLoopTaskInit();  //app init
+	RemoteTaskInit();  //遥控器数据初始化
+	usleep(800 * 1000); //800ms
+	BSP_Init();
+	system_micrsecond = Get_Time_Micros();
+	xil_printf("Initialize finished!!\n\r");
+
+		while(1)
+		{
+
+
+			/* Block receiving the buffer. */
+			ReceivedCount = 0;
+			while (ReceivedCount < TEST_BUFFER_SIZE) {
+				ReceivedCount +=
+					XUartPs_Recv(&Uart_Ps, &RecvBuffer[ReceivedCount],
+						      (TEST_BUFFER_SIZE - ReceivedCount));
+			}
+		    RemoteDataPrcess(RecvBuffer);
+
+		}
+	return XST_SUCCESS;
+}

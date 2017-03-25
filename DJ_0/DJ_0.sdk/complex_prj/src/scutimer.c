@@ -142,6 +142,8 @@ static int TimerSetupIntrSystem(XScuGic *IntcInstancePtr,
  *
  */
 static u32 count_1ms_ext=0;
+int i=0;
+u8 RecvBuffer_clear[TEST_BUFFER_SIZE];
 static void TimerIntrHandler(void *CallBackRef)
 {
 	XScuTimer *TimerInstancePtr = (XScuTimer *) CallBackRef;
@@ -152,67 +154,73 @@ static void TimerIntrHandler(void *CallBackRef)
 		    XScuTimer_ClearInterruptStatus(TimerInstancePtr);
 		    count_1ms_ext = count_1ms;
 		    count_1ms++;  //counter + 1
-		    GetPitchYawGxGyGz();
+
+			WorkStateFSM(count_1ms);
+			WorkStateSwitchProcess();
+
+		    GetPitchYawGxGyGz();  //读取姿态数据，数据已处理成连续方式
 
 			//启动后根据磁力计的数据初始化四元数
 			if(count_1ms <100)
 			{
-				Init_Quaternion();
+				Init_Quaternion();                                       //OK
 			}
 			//平台稳定后，复位陀螺仪模块
 			if(count_1ms == PREPARE_TIME_TICK_MS/2)
 			{
-				GYRO_RST();
+				GYRO_RST();                                              //OK
 			}
+
+
 
 			//step 1: 云台控制
 			GimbalYawControlModeSwitch();   //模式切换处理，得到位置环的设定值和给定值
 			GMPitchControlLoop();
 			GMYawControlLoop();
 			SetGimbalMotorOutput();
-			//CalibrateLoop();   //校准任务，当接收到校准命令后才有效执行，否则直接跳过
 
-		//	WorkStateFSM(count_1ms);
-		//	WorkStateSwitchProcess();
-			//启动后根据磁力计的数据初始化四元数
-		//	if(count_1ms<100)
-		//	{
-		//		Init_Quaternion();
-		//	}
-		    //xil_printf("***********1ms**************\n\r");
 		    if(count_1ms % 1000 ==0) //1S进一次    用于串口打印
 		    {
+
 		    	//打印遥控器数据
-/*				printf("ch0 = %d ch1 = %d ch2 = %d ch3 = %d\n",\
+	//			printf("ch0 = %d ch1 = %d ch2 = %d ch3 = %d\n",\
 						RC_CtrlData.rc.ch0,RC_CtrlData.rc.ch1,RC_CtrlData.rc.ch2,RC_CtrlData.rc.ch3);
-				printf("s1 = %d s2 = %d\n",RC_CtrlData.rc.s1,RC_CtrlData.rc.s2);
-				printf("key = %d\n",RC_CtrlData.key.v);
-				xil_printf("*************************************************************\n\r");
+	//			printf("s1 = %d s2 = %d\n",RC_CtrlData.rc.s1,RC_CtrlData.rc.s2);
+	//			printf("key = %d\n",RC_CtrlData.key.v);
+				//xil_printf("*************************************************************\n\r");
+
+	//		   	printf("CM1SpeedPID = %f CM2SpeedPID = %f CM3SpeedPID = %f CM4SpeedPID = %f\n\r",CM1SpeedPID.Out,\
+			   			CM2SpeedPID.Out,\
+						CM3SpeedPID.Out,\
+						CM4SpeedPID.Out);
+	//		   	printf("CM1SpeedPID.Fdb = %f CM2SpeedPID.Fdb = %f CM3SpeedPID.Fdb = %f CM4SpeedPID.Fdb = %f\n\r",CM1SpeedPID.Fdb,\
+			   			CM2SpeedPID.Fdb,\
+						CM3SpeedPID.Fdb,\
+						CM4SpeedPID.Fdb);
+/*		   	printf("angle[0] = %f angle[1] = %f angle[2] = %f\n\r",angle[0],\
+		   			angle[1],\
+					angle[2]);
+		   	printf("Pitch_Ref = %f Pitch_Fdb = %f Pitch_Out = %f\n\r",GMPSpeedPID.Ref,\
+		   			GMPSpeedPID.Fdb,\
+					GMPSpeedPID.Out);
+		   	printf("pitch_angle_dynamic_ref = %f\n\r",GimbalRef.pitch_angle_dynamic_ref);
+
+			printf("GMPPositionPID.Fdb = %f\n\r",GMPPositionPID.Fdb);
 */
-		    	//MPU6050打印任务angle
-		    //	printf("GYRO_receive = %x ACC_Z_receive = %x \n\r",MPU6050_Raw_Data.Accel_X,\
-		   // 			MPU6050_Raw_Data.Gyro_X);
-		   	printf("yaw_angle = %f pitch_angle = %f roll_angle = %f\n\r",yaw_angle,\
-		   			pitch_angle,\
-					roll_angle);
-		//	printf("Mag_X = %d Mag_Y = %d Mag_Z = %d\n\r",MPU6050_Raw_Data.Mag_X,\
-		//			MPU6050_Raw_Data.Mag_Y,\
-		//			MPU6050_Raw_Data.Mag_Z);
-//
-		    	//xil_printf("*************************************************************\n\r");
+//printf("MPU6050_Real_Data.Gyro_Y = %f\n\r",MPU6050_Real_Data.Gyro_Y);
+//printf("-GMPitchEncoder.ecd_angle = %f\n\r",-GMPitchEncoder.ecd_angle);
+//    xil_printf("*************************************************************\n\r");
 		    }
+			//chassis motor control
 		    if(count_1ms % 4 ==0) //4mS进一次        4ms == motor control frequency
 		    {
 		    	//底盘控制任务
-
-	//		   CMControlLoop();
+			   CMControlLoop();
 		    }
-		    if(count_1ms % 4 ==2)
+		    if(count_1ms % 4 ==1)
 		    {
-		    	//IIC_Read(MPU6050_SLAVE_ADDR,0x3B,MPU6050_receive  ,16);
-
-	//			RecvFrame(CanInstPtr_1,&rx_message);   //接收can
-	//			CanReceiveMsgProcess(&rx_message);    //处理can接收的数据
+				RecvFrame(CanInstPtr_1,&rx_message_1);   //接收can_1
+				CanReceiveMsgProcess(&rx_message_1);    //处理can_1接收的数据
 	/*			printf("CMxSpeedPID.Ref = %f %f %f %f\n",CM1SpeedPID.Ref,\
 						CM2SpeedPID.Ref,\
 						CM3SpeedPID.Ref,\
@@ -224,13 +232,22 @@ static void TimerIntrHandler(void *CallBackRef)
 						CM4SpeedPID.Fdb);
 */
 		    }
+		    if(count_1ms % 4 ==2)
+		    {
+				RecvFrame(CanInstPtr_0,&rx_message_0);   //接收can_0
+				CanReceiveMsgProcess(&rx_message_0);    //处理can_0接收的数据
+		    }
 		    if(count_1ms % 4 ==3)
 		    {
-		    	GYRO_receive = (MPU6050_receive[10]<<8) + (MPU6050_receive[11]);
-				if(GYRO_receive>32768){GYRO_receive-=65536;}
-
-				ACC_Z_receive = (MPU6050_receive[0]<<8) + (MPU6050_receive[1]);
-				if(ACC_Z_receive>32768){ACC_Z_receive-=65536;}
+				//	接收遥控器数据
+				if(ReceivedCount>=TEST_BUFFER_SIZE)
+				{
+					ReceivedCount = 0;
+				}
+				ReceivedCount +=
+						XUartPs_Recv(&Uart_Ps, &RecvBuffer[ReceivedCount],
+									(TEST_BUFFER_SIZE - ReceivedCount));
+			    RemoteDataPrcess(RecvBuffer);
 
 		    }
 	}

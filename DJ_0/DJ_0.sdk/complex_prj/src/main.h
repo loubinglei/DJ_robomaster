@@ -13,7 +13,7 @@
 #include "math.h"
 #include "sleep.h"
 
-
+#include "bsp.h"
 #include "scutimer.h"
 #include "Uart_0.h"
 #include "RemoteTask.h"
@@ -31,10 +31,14 @@
 #include "IOTask.h"
 
 /************************** Constant Definitions *****************************/
+#define CAN_0_DEVICE_ID		XPAR_XCANPS_0_DEVICE_ID
+#define CAN_1_DEVICE_ID	    XPAR_XCANPS_1_DEVICE_ID
 
-
+#define upload_time 1000 //计算上传时间  单位 ms
 /************************** Variable Definitions *****************************/
 extern XCanPs *CanInstPtr_0;
 extern XCanPs *CanInstPtr_1;
+
+uint32_t system_micrsecond;   //
 
 #endif

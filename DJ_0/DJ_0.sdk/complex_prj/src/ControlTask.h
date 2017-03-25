@@ -19,23 +19,23 @@ typedef enum
 
 #define STATE_SWITCH_DELAY_TICK 100000   //mode change delay count in ms
 
-#define YAW_POSITION_KP_DEFAULTS  25
+#define YAW_POSITION_KP_DEFAULTS  0                                //25
 #define YAW_POSITION_KI_DEFAULTS  0
 #define YAW_POSITION_KD_DEFAULTS  0
 
-#define YAW_SPEED_KP_DEFAULTS  35
+#define YAW_SPEED_KP_DEFAULTS  0                                        //35
 #define YAW_SPEED_KI_DEFAULTS  0
 #define YAW_SPEED_KD_DEFAULTS  0
 
 // avoid bang --->  position:20.0  speed:19.0
 //big bang   22.5 20.0
-#define PITCH_POSITION_KP_DEFAULTS  20.0
+#define PITCH_POSITION_KP_DEFAULTS  20.0                                   //20
 #define PITCH_POSITION_KI_DEFAULTS  0
-#define PITCH_POSITION_KD_DEFAULTS  0
+#define PITCH_POSITION_KD_DEFAULTS  0.1
 
-#define PITCH_SPEED_KP_DEFAULTS  19.0
+#define PITCH_SPEED_KP_DEFAULTS  12.0                                 //19.0
 #define PITCH_SPEED_KI_DEFAULTS  0
-#define PITCH_SPEED_KD_DEFAULTS  0
+#define PITCH_SPEED_KD_DEFAULTS  0.1
 
 #define PID_SHOOT_MOTOR_SPEED_INIT (7)
 #define PID_SHOOT_MOTOR_SPEED      (10)
@@ -43,28 +43,29 @@ typedef enum
 
 #define CHASSIS_SPEED_ATTENUATION   (1.0f)
 
-#define CHASSIS_MOTOR_ROTATE_PID_DEFAULT \
-{\
-	0,\
-	0,\
-	{0,0},\
-	1.20f,\
-	0.0f,\
-	0.0f,\
-	0,\
-	0,\
-	0,\
-	4900,\
-	1000,\
-	1500,\
-	0,\
-	5000,\
-	0,\
-	0,\
-	0,\
-	&PID_Calc,\
-	&PID_Reset,\
-}\
+
+#define CHASSIS_MOTOR_ROTATE_PID_DEFAULT\
+						 { 0.0f, \
+                           0.0f, \
+                           0.0f, \
+						   12.0f, \
+                           0.0f, \
+                           0.0f, \
+                           0.0f, \
+						   4900.0f, \
+						   1000.0f, \
+						   1500.0f, \
+                           0.0f, \
+                           5000.0f, \
+                           -5000.0f, \
+                           0.0f, \
+                           0.0f, \
+						   0.0f, \
+                           0.0f, \
+						   0.0f, \
+                           0.0f, \
+              			  &pid_calc,\
+											&pid_clear}\
 
 //gimbal position pid control
 //20  19
@@ -252,14 +253,14 @@ void SetGimbalMotorOutput(void);
 void CMControlLoop(void);
 
 /************************** Variable Definitions *****************************/
-//extern PID_Regulator_t CMRotatePID;      		//底盘跟随云台PID
-//extern PID GMPPositionPID;      	//pitch轴位置环PID
-//extern PID_Regulator_t GMPSpeedPID;      		//pitch轴速度换PID
-//extern PID GMYPositionPID;			//yaw轴位置环PID
-//extern PID_Regulator_t GMYSpeedPID;      		//yaw轴速度环PID
+extern PID CMRotatePID;      		//底盘跟随云台PID
+extern PID GMPPositionPID;      	//pitch轴位置环PID
+extern PID GMPSpeedPID;      		//pitch轴速度换PID
+extern PID GMYPositionPID;			//yaw轴位置环PID
+extern PID GMYSpeedPID;      		//yaw轴速度环PID
 
-//extern PID_Regulator_t ShootMotorPositionPID;    //射击电机位置环PID
-//extern PID_Regulator_t ShootMotorSpeedPID;       //射击电机速度环PID
+//extern PID ShootMotorPositionPID;    //射击电机位置环PID
+//extern PID ShootMotorSpeedPID;       //射击电机速度环PID
 
 extern PID CM1SpeedPID;				 //底盘电机速度环PID
 extern PID CM2SpeedPID;

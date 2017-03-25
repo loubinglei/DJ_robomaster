@@ -91,14 +91,14 @@ int Uart_Intr_Initialize(INTC *IntcInstPtr, XUartPs *UartInstPtr,
 
 	XUartPs_SetHandler(UartInstPtr, (XUartPs_Handler)Handler, UartInstPtr);
 
-	IntrMask = //XUARTPS_IXR_RXOVR | XUARTPS_IXR_RXFULL;
+	IntrMask =
 		XUARTPS_IXR_TOUT | XUARTPS_IXR_PARITY | XUARTPS_IXR_FRAMING |
 		XUARTPS_IXR_OVER | XUARTPS_IXR_TXEMPTY | XUARTPS_IXR_RXFULL |
 		XUARTPS_IXR_RXOVR;
 
 	XUartPs_SetInterruptMask(UartInstPtr, IntrMask);
 
-	//XUartPs_SetRecvTimeout(UartInstPtr, 1);
+	XUartPs_SetRecvTimeout(UartInstPtr, 8);
 
 	Format_tx.BaudRate=100000;
 	Format_tx.DataBits=0x0;

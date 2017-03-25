@@ -47,44 +47,35 @@ static uint8_t AppParamSave(void)
 //用于从flash中读取校准数据
 void AppParamInit(void)
 {
+     gAppParamStruct.ParamSavedFlag=0x5A;
+     gAppParamStruct.FirmwareVersion=0x00000000;
 
-     app_param_calied_flag = 0;
-     gAppParamStruct.FirmwareVersion = 0; //保留未使用
-     gAppParamStruct.ParamSavedFlag = PARAM_SAVED_FLAG;
-
-    //if not calied before the flag is NONE the init the para with default value
-
-        gAppParamStruct.GimbalCaliData.GimbalCaliFlag = PARAM_CALI_NONE;
-        gAppParamStruct.GimbalCaliData.GimbalPitchOffset = 0;
-        gAppParamStruct.GimbalCaliData.GimbalYawOffset = 0;
+     gAppParamStruct.GimbalCaliData.GimbalCaliFlag = PARAM_SAVED_FLAG;
+     gAppParamStruct.GimbalCaliData.GimbalPitchOffset = 0x096C;
+     gAppParamStruct.GimbalCaliData.GimbalYawOffset = 0x0DC4;
     
-
-
-        gAppParamStruct.GyroCaliData.GyroCaliFlag = PARAM_CALI_NONE;
-        gAppParamStruct.GyroCaliData.GyroXOffset = 0;
-        gAppParamStruct.GyroCaliData.GyroYOffset = 0;
-        gAppParamStruct.GyroCaliData.GyroZOffset = 0;
+     gAppParamStruct.GyroCaliData.GyroCaliFlag = PARAM_SAVED_FLAG;
+     gAppParamStruct.GyroCaliData.GyroXOffset = 0xFFAC;
+     gAppParamStruct.GyroCaliData.GyroYOffset = 0x0054;
+     gAppParamStruct.GyroCaliData.GyroZOffset = 0x001C;
     
-
-
-        gAppParamStruct.AccCaliData.AccCaliFlag = PARAM_CALI_NONE;
-        gAppParamStruct.AccCaliData.AccXOffset = 0;
-        gAppParamStruct.AccCaliData.AccYOffset = 0;
-        gAppParamStruct.AccCaliData.AccZOffset = 0;
-        gAppParamStruct.AccCaliData.AccXScale = 1.0;
-        gAppParamStruct.AccCaliData.AccYScale = 1.0;
-        gAppParamStruct.AccCaliData.AccZScale = 1.0;
+     gAppParamStruct.AccCaliData.AccCaliFlag = PARAM_CALI_NONE;
+     gAppParamStruct.AccCaliData.AccXOffset = 0x0000;
+     gAppParamStruct.AccCaliData.AccYOffset = 0x0000;
+     gAppParamStruct.AccCaliData.AccZOffset = 0x0000;
+     gAppParamStruct.AccCaliData.AccXScale = 1.0;
+     gAppParamStruct.AccCaliData.AccYScale = 1.0;
+     gAppParamStruct.AccCaliData.AccZScale = 1.0;
     
+     gAppParamStruct.MagCaliData.MagCaliFlag = PARAM_CALI_NONE;
+     gAppParamStruct.MagCaliData.MagXOffset = 0x0000;
+     gAppParamStruct.MagCaliData.MagYOffset = 0x0000;
+     gAppParamStruct.MagCaliData.MagZOffset = 0x0000;
+     gAppParamStruct.MagCaliData.MagXScale = 1.0;
+     gAppParamStruct.MagCaliData.MagYScale = 1.0;
+     gAppParamStruct.MagCaliData.MagZScale = 1.0;
 
-
-        gAppParamStruct.MagCaliData.MagCaliFlag = PARAM_CALI_NONE;
-        gAppParamStruct.MagCaliData.MagXOffset = 0;
-        gAppParamStruct.MagCaliData.MagYOffset = 0;
-        gAppParamStruct.MagCaliData.MagZOffset = 0;
-        gAppParamStruct.MagCaliData.MagXScale = 1.0;
-        gAppParamStruct.MagCaliData.MagYScale = 1.0;
-        gAppParamStruct.MagCaliData.MagZScale = 1.0;
-
+     app_param_calied_flag = 1;
 }
 
 void SetGimbalCaliData(GimbalCaliStruct_t *cali_data)
