@@ -1,0 +1,11 @@
+#include "main.h"
+
+void BSP_Init(void)
+{
+	Uart_polled_Initialize(&Uart_Ps,UART_DEVICE_ID);  //UART_0初始化，接收遥控器数据
+	CanPs_Polled_init(CAN_0_DEVICE_ID, CanInstPtr_0); //CAN_1初始化，底盘电机
+	CanPs_Polled_init(CAN_1_DEVICE_ID, CanInstPtr_1); //CAN_1初始化，底盘电机
+	IIC_Init(&Iic,IIC_0_DEVICE_ID);    //IIC_0初始化，采集MPU6050
+	MPU6050_Init();
+}
+
