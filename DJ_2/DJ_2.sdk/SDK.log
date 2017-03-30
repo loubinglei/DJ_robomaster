@@ -1,0 +1,28 @@
+10:00:00 INFO  : Launching XSDB server: xsdb.bat -interactive C:\Users\bing\temp\vivado_test\DJ_2\DJ_2.sdk\temp_xsdb_launch_script.tcl
+10:00:02 INFO  : XSDB server has started successfully.
+10:00:04 INFO  : Processing command line option -hwspec C:/Users/bing/temp/vivado_test/DJ_2/DJ_2.sdk/design_1_wrapper.hdf.
+10:03:33 INFO  : Refreshed build settings on project xil_Robomasters
+10:27:28 INFO  : Invoking Bootgen: bootgen -image sd.bif -arch zynq -o C:\Users\bing\temp\vivado_test\DJ_2\DJ_2.sdk\sd\bootimage\BOOT.bin
+10:27:28 INFO  : Creating new bif file C:\Users\bing\temp\vivado_test\DJ_2\DJ_2.sdk\sd\bootimage\sd.bif
+10:27:29 INFO  : Bootgen command execution is done.
+11:00:29 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1490841892816,  Project:1490839123564
+11:00:29 INFO  : Project design_1_wrapper_hw_platform_0's source hardware specification located at C:/Users/bing/temp/vivado_test/DJ_2/DJ_2.sdk/design_1_wrapper.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+11:00:36 INFO  : Copied contents of C:/Users/bing/temp/vivado_test/DJ_2/DJ_2.sdk/design_1_wrapper.hdf into \design_1_wrapper_hw_platform_0\system.hdf.
+11:00:41 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+11:00:48 INFO  : 
+11:00:50 INFO  : 
+11:00:51 INFO  : Updating hardware inferred compiler options for sd.
+11:00:51 INFO  : Updating hardware inferred compiler options for xil_Robomasters.
+11:00:51 INFO  : Clearing existing target manager status.
+11:00:53 INFO  : Closing and re-opening the MSS file of ther project xil_Robomasters_bsp
+11:00:53 INFO  : Closing and re-opening the MSS file of ther project sd_bsp
+11:00:53 INFO  : Workspace synchronized with the new hardware specification file. Cleaning dependent projects...
+11:00:54 WARN  : Linker script will not be updated automatically. Users need to update it manually.
+11:02:15 INFO  : Invoking Bootgen: bootgen -image sd.bif -arch zynq -o C:\Users\bing\temp\vivado_test\DJ_2\DJ_2.sdk\sd\bootimage\BOOT.bin -w on
+11:02:16 INFO  : Bootgen command execution is done.
+11:15:39 ERROR : Unexpected error while parsing XMD response ?: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: invalid number or unquoted string near 
+11:24:24 INFO  : Launching XSDB server: xsdb.bat -interactive C:\Users\bing\temp\vivado_test\DJ_2\DJ_2.sdk\temp_xsdb_launch_script.tcl
+11:24:25 INFO  : XSDB server has started successfully.
+15:43:02 INFO  : Launching XSDB server: xsdb.bat -interactive C:\Users\bing\temp\vivado_test\DJ_2\DJ_2.sdk\temp_xsdb_launch_script.tcl
+15:43:04 INFO  : XSDB server has started successfully.

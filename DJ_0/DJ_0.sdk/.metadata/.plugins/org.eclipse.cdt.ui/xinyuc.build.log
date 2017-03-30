@@ -1,8 +1,0 @@
-20:52:12 **** Incremental Build of configuration Debug for project xinyuc ****
-make pre-build main-build 
-a9-linaro-pre-build-step
-' '
-make: *** 没有规则可以创建“xinyuc.elf”需要的目标“helloworld.o”。 停止。
-
-20:52:12 Build Finished (took 126ms)
-
