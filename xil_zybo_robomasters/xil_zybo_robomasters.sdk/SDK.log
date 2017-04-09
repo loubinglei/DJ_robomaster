@@ -1,0 +1,160 @@
+14:03:06 INFO  : Launching XSDB server: xsdb.bat -interactive C:\Users\bing\temp\vivado_test\xil_zybo_robomasters\xil_zybo_robomasters.sdk\temp_xsdb_launch_script.tcl
+14:03:07 INFO  : XSDB server has started successfully.
+14:03:07 INFO  : Processing command line option -hwspec C:/Users/bing/temp/vivado_test/xil_zybo_robomasters/xil_zybo_robomasters.sdk/design_1_wrapper.hdf.
+14:04:38 INFO  : Refreshed build settings on project xil_Robomasters
+14:09:41 INFO  : Invoking Bootgen: bootgen -image TF_Card.bif -arch zynq -o C:\Users\bing\temp\vivado_test\xil_zybo_robomasters\xil_zybo_robomasters.sdk\TF_Card\bootimage\BOOT.bin
+14:09:41 INFO  : Creating new bif file C:\Users\bing\temp\vivado_test\xil_zybo_robomasters\xil_zybo_robomasters.sdk\TF_Card\bootimage\TF_Card.bif
+14:09:41 INFO  : Bootgen command execution is done.
+14:39:18 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:39:21 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo 210279572442A" && level==0} -index 1' command is executed.
+14:39:23 INFO  : FPGA configured successfully with bitstream "C:/Users/bing/temp/vivado_test/xil_zybo_robomasters/xil_zybo_robomasters.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+14:39:43 INFO  : ps7_init is completed.
+14:39:43 INFO  : ps7_post_config is completed.
+14:39:43 INFO  : Processor reset is completed for ps7_cortexa9_0
+14:40:42 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:40:43 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo 210279572442A" && level==0} -index 1' command is executed.
+14:40:44 INFO  : FPGA configured successfully with bitstream "C:/Users/bing/temp/vivado_test/xil_zybo_robomasters/xil_zybo_robomasters.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+14:40:56 INFO  : ps7_init is completed.
+14:40:56 INFO  : ps7_post_config is completed.
+14:40:56 INFO  : Processor reset is completed for ps7_cortexa9_0
+14:42:33 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+14:42:34 INFO  : Processor reset is completed for ps7_cortexa9_0
+14:45:24 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+14:45:25 INFO  : Processor reset is completed for ps7_cortexa9_0
+14:55:14 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:55:16 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo 210279572442A" && level==0} -index 1' command is executed.
+14:55:17 INFO  : FPGA configured successfully with bitstream "C:/Users/bing/temp/vivado_test/xil_zybo_robomasters/xil_zybo_robomasters.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+14:55:30 INFO  : ps7_init is completed.
+14:55:30 INFO  : ps7_post_config is completed.
+14:55:30 INFO  : Processor reset is completed for ps7_cortexa9_0
+14:56:13 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+14:56:14 INFO  : Processor reset is completed for ps7_cortexa9_0
+14:56:31 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+14:56:33 INFO  : Processor reset is completed for ps7_cortexa9_0
+14:58:14 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+14:58:15 INFO  : Processor reset is completed for ps7_cortexa9_0
+14:58:54 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+14:58:55 INFO  : Processor reset is completed for ps7_cortexa9_0
+14:59:51 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+14:59:53 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:03:16 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+15:03:18 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:04:10 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+15:04:11 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:04:45 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+15:04:46 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:05:13 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+15:05:17 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo 210279572442A" && level==0} -index 1' command is executed.
+15:05:18 INFO  : FPGA configured successfully with bitstream "C:/Users/bing/temp/vivado_test/xil_zybo_robomasters/xil_zybo_robomasters.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+15:05:32 INFO  : ps7_init is completed.
+15:05:32 INFO  : ps7_post_config is completed.
+15:05:32 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:06:11 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+15:06:13 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:06:41 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+15:06:43 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:07:16 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+15:07:16 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo 210279572442A" && level==0} -index 1' command is executed.
+15:07:18 INFO  : FPGA configured successfully with bitstream "C:/Users/bing/temp/vivado_test/xil_zybo_robomasters/xil_zybo_robomasters.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+15:07:28 INFO  : ps7_init is completed.
+15:07:29 INFO  : ps7_post_config is completed.
+15:07:29 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:08:15 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+15:08:16 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:09:07 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+15:09:09 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:09:46 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+15:09:47 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:10:34 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+15:10:36 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:19:10 ERROR : Unexpected error while parsing XMD response ?: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: invalid number or unquoted string near 
+15:35:45 INFO  : Launching XSDB server: xsdb.bat -interactive C:\Users\bing\temp\vivado_test\xil_zybo_robomasters\xil_zybo_robomasters.sdk\temp_xsdb_launch_script.tcl
+15:35:46 INFO  : XSDB server has started successfully.
+15:38:16 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+15:38:19 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo 210279572442A" && level==0} -index 1' command is executed.
+15:38:20 INFO  : FPGA configured successfully with bitstream "C:/Users/bing/temp/vivado_test/xil_zybo_robomasters/xil_zybo_robomasters.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+15:38:45 INFO  : ps7_init is completed.
+15:38:45 INFO  : ps7_post_config is completed.
+15:38:46 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:39:17 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+15:39:18 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:39:43 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+15:40:13 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:41:09 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+15:41:10 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:41:23 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+15:41:24 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo 210279572442A" && level==0} -index 1' command is executed.
+15:41:26 INFO  : FPGA configured successfully with bitstream "C:/Users/bing/temp/vivado_test/xil_zybo_robomasters/xil_zybo_robomasters.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+15:41:38 INFO  : ps7_init is completed.
+15:41:38 INFO  : ps7_post_config is completed.
+15:41:39 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:42:47 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+15:42:49 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:44:00 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+15:44:02 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:45:19 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+15:45:21 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:48:02 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+15:48:04 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:49:08 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+15:49:09 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:57:26 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+15:57:28 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:58:42 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+15:58:44 INFO  : Processor reset is completed for ps7_cortexa9_0
+16:13:03 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+16:13:03 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo 210279572442A" && level==0} -index 1' command is executed.
+16:13:05 INFO  : FPGA configured successfully with bitstream "C:/Users/bing/temp/vivado_test/xil_zybo_robomasters/xil_zybo_robomasters.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+16:13:15 INFO  : ps7_init is completed.
+16:13:15 INFO  : ps7_post_config is completed.
+16:13:16 INFO  : Processor reset is completed for ps7_cortexa9_0
+16:20:27 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+16:20:29 INFO  : Processor reset is completed for ps7_cortexa9_0
+16:25:17 ERROR : Unexpected error while parsing XMD response ?: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: invalid number or unquoted string near 
+16:26:41 INFO  : Launching XSDB server: xsdb.bat -interactive C:\Users\bing\temp\vivado_test\xil_zybo_robomasters\xil_zybo_robomasters.sdk\temp_xsdb_launch_script.tcl
+16:26:42 INFO  : XSDB server has started successfully.
+16:26:47 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1491380766094,  Project:1491372157014
+16:26:47 INFO  : Project design_1_wrapper_hw_platform_0's source hardware specification located at C:/Users/bing/temp/vivado_test/xil_zybo_robomasters/xil_zybo_robomasters.sdk/design_1_wrapper.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+16:27:07 INFO  : Copied contents of C:/Users/bing/temp/vivado_test/xil_zybo_robomasters/xil_zybo_robomasters.sdk/design_1_wrapper.hdf into \design_1_wrapper_hw_platform_0\system.hdf.
+16:27:12 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+16:27:15 INFO  : 
+16:27:17 INFO  : 
+16:27:18 INFO  : Updating hardware inferred compiler options for TF_Card.
+16:27:18 INFO  : Updating hardware inferred compiler options for xil_Robomasters.
+16:27:18 INFO  : Clearing existing target manager status.
+16:27:19 INFO  : Workspace synchronized with the new hardware specification file. Cleaning dependent projects...
+16:27:20 WARN  : Linker script will not be updated automatically. Users need to update it manually.
+16:36:23 INFO  : Invoking Bootgen: bootgen -image TF_Card.bif -arch zynq -o C:\Users\bing\temp\vivado_test\xil_zybo_robomasters\xil_zybo_robomasters.sdk\TF_Card\bootimage\BOOT.bin -w on
+16:36:24 INFO  : Bootgen command execution is done.
+16:39:47 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+16:39:49 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo 210279572442A" && level==0} -index 1' command is executed.
+16:39:51 INFO  : FPGA configured successfully with bitstream "C:/Users/bing/temp/vivado_test/xil_zybo_robomasters/xil_zybo_robomasters.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+16:40:40 INFO  : ps7_init is completed.
+16:40:40 INFO  : ps7_post_config is completed.
+16:40:40 INFO  : Processor reset is completed for ps7_cortexa9_0
+16:41:48 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+16:41:50 INFO  : Processor reset is completed for ps7_cortexa9_0
+16:42:23 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+16:42:25 INFO  : Processor reset is completed for ps7_cortexa9_0
+16:42:40 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+16:42:42 INFO  : Processor reset is completed for ps7_cortexa9_0
+16:42:54 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+16:42:58 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo 210279572442A" && level==0} -index 1' command is executed.
+16:42:59 INFO  : FPGA configured successfully with bitstream "C:/Users/bing/temp/vivado_test/xil_zybo_robomasters/xil_zybo_robomasters.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+16:43:09 INFO  : ps7_init is completed.
+16:43:09 INFO  : ps7_post_config is completed.
+16:43:09 INFO  : Processor reset is completed for ps7_cortexa9_0
+16:43:39 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+16:43:39 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo 210279572442A" && level==0} -index 1' command is executed.
+16:43:41 INFO  : FPGA configured successfully with bitstream "C:/Users/bing/temp/vivado_test/xil_zybo_robomasters/xil_zybo_robomasters.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+16:43:52 INFO  : ps7_init is completed.
+16:43:52 INFO  : ps7_post_config is completed.
+16:43:53 INFO  : Processor reset is completed for ps7_cortexa9_0
+16:44:56 INFO  : Invoking Bootgen: bootgen -image TF_Card.bif -arch zynq -o C:\Users\bing\temp\vivado_test\xil_zybo_robomasters\xil_zybo_robomasters.sdk\TF_Card\bootimage\BOOT.bin -w on
+16:44:56 INFO  : Bootgen command execution is done.
+17:52:10 ERROR : Unexpected error while parsing XMD response ?: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: invalid number or unquoted string near 
+19:44:29 INFO  : Launching XSDB server: xsdb.bat -interactive C:\Users\bing\temp\vivado_test\xil_zybo_robomasters\xil_zybo_robomasters.sdk\temp_xsdb_launch_script.tcl
+19:44:31 INFO  : XSDB server has started successfully.
+11:29:09 INFO  : Launching XSDB server: xsdb.bat -interactive C:\Users\bing\temp\vivado_test\xil_zybo_robomasters\xil_zybo_robomasters.sdk\temp_xsdb_launch_script.tcl
+11:29:11 INFO  : XSDB server has started successfully.

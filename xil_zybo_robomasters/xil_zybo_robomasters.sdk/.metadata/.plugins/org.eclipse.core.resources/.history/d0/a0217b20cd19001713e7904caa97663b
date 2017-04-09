@@ -1,0 +1,68 @@
+
+/***************************** Include Files *********************************/
+#include"main.h"
+
+/****************************************************************************/
+/**
+*
+* This function is the main function of the Can polled example.
+*
+* @param	None
+*
+* @return
+*		- XST_SUCCESS if the example has completed successfully.
+*		- XST_FAILURE if the example has failed.
+*
+* @note		None
+*
+*****************************************************************************/
+int main()
+{
+	int count=0;
+    init_platform();
+	ControtLoopTaskInit();  //app init
+	RemoteTaskInit();       //遥控器数据初始化
+	usleep(800 * 1000);     //800ms
+	BSP_Init();
+	system_micrsecond = Get_Time_Micros();
+	xil_printf("Initialize finished!!\n\r");
+	while(1)
+	{
+		count++;
+//		IMU_getYawPitchRoll(angle);
+//		if((Get_Time_Micros() - system_micrsecond) > upload_time)   //1000ms 即1s执行一次
+//		{
+//			system_micrsecond = Get_Time_Micros();
+//			usleep(1 * 1000); //1ms
+//		}
+		//	接收遥控器数据
+		if(ReceivedCount>=TEST_BUFFER_SIZE)
+		{
+			ReceivedCount = 0;
+		}
+		ReceivedCount +=
+				XUartPs_Recv(&Uart_Ps, &RecvBuffer[ReceivedCount],
+							(TEST_BUFFER_SIZE - ReceivedCount));
+	    RemoteDataPrcess(RecvBuffer);
+
+	    if(count>100000)
+	    {
+	    	count = 0;
+	    	//打印遥控器数据
+	    	printf("ch0 = %d ch1 = %d ch2 = %d ch3 = %d\n",
+				RC_CtrlData.rc.ch0,RC_CtrlData.rc.ch1,RC_CtrlData.rc.ch2,RC_CtrlData.rc.ch3);
+	    	printf("s1 = %d s2 = %d\n",RC_CtrlData.rc.s1,RC_CtrlData.rc.s2);
+	    	printf("key = %d\n",RC_CtrlData.key.v);
+	    	xil_printf("*************************************************************\n\r");
+	    }
+	}
+	cleanup_platform();
+	return XST_SUCCESS;
+}
+
+
+
+
+
+
+

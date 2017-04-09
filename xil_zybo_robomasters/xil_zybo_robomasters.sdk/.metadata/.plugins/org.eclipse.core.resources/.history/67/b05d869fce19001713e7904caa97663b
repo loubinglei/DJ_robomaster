@@ -1,0 +1,31 @@
+#include "../main.h"
+
+static INTC my_XScuGic;
+static XCanPs Can_0;
+static XCanPs Can_1;
+XCanPs *CanInstPtr_0 = &Can_0;
+XCanPs *CanInstPtr_1 = &Can_1;
+
+void BSP_Init(void)
+{
+
+	GIC_init(&my_XScuGic);  							//中断初始化
+
+//	Uart_polled_Initialize(&Uart_Ps,UART_DEVICE_ID);	//UART_0初始化，接收遥控器数据
+
+//	CanPs_Intr_init_0(&my_XScuGic,CanInstPtr_0,
+//			CAN_0_DEVICE_ID,CAN_0_INTR_VEC_ID);         //CAN_0初始化，云台
+
+//	CanPs_Intr_init_1(&my_XScuGic,CanInstPtr_1,
+//			CAN_1_DEVICE_ID,CAN_1_INTR_VEC_ID);         //CAN_1初始化，底盘电机
+
+//	IIC_Init(&Iic,IIC_0_DEVICE_ID);                     //IIC_0初始化，采集MPU6050
+
+//	MPU6050_Init(); 									//MPU6050初始化
+
+
+	ScuTimerIntrExample(&my_XScuGic, &TimerInstance,
+			TIMER_DEVICE_ID, TIMER_IRPT_INTR);          //1ms定时器中断初始化
+
+}
+

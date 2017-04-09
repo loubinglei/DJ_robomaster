@@ -1,0 +1,7 @@
+//arch = zynq; split = false; format = BIN
+the_ROM_image:
+{
+	[bootloader]C:\Users\bing\temp\vivado_test\xil_zybo_robomasters\xil_zybo_robomasters.sdk\TF_Card\Debug\TF_Card.elf
+	C:\Users\bing\temp\vivado_test\xil_zybo_robomasters\xil_zybo_robomasters.sdk\design_1_wrapper_hw_platform_0\design_1_wrapper.bit
+	C:\Users\bing\temp\vivado_test\xil_zybo_robomasters\xil_zybo_robomasters.sdk\xil_Robomasters\Debug\xil_Robomasters.elf
+}

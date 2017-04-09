@@ -1,7 +1,0 @@
-//arch = zynq; split = false; format = BIN
-the_ROM_image:
-{
-	[bootloader]C:\Users\bing\temp\vivado_test\DJ_2\DJ_2.sdk\sd\Debug\sd.elf
-	C:\Users\bing\temp\vivado_test\DJ_2\DJ_2.sdk\design_1_wrapper_hw_platform_0\design_1_wrapper.bit
-	C:\Users\bing\temp\vivado_test\DJ_2\DJ_2.sdk\xil_Robomasters\Debug\xil_Robomasters.elf
-}
